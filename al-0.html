@@ -18,16 +18,11 @@
     }
 
     /* === DARK MODE === */
-    body.dark {
-      background: #0F0F17;
-    }
-    body.dark .page-header {
-      border-bottom-color: rgba(255,255,255,0.08);
-    }
+    body.dark { background: #0F0F17; }
+    body.dark .page-header { border-bottom-color: rgba(255,255,255,0.08); }
     body.dark .page-header h1 { color: #E0E0E0; }
     body.dark .page-header p { color: #606070; }
 
-    /* dark: frame */
     body.dark .canvas-frame {
       border-color: #444455 !important;
       background: rgba(255,255,255,0.03) !important;
@@ -38,7 +33,6 @@
       background: rgba(255,255,255,0.08) !important;
     }
 
-    /* dark: node */
     body.dark .node-type-N .node-inner {
       background-color: #252530 !important;
       border-color: rgba(158,158,158,0.5) !important;
@@ -55,27 +49,33 @@
     body.dark .node-type-N .node-footer { color: #606070 !important; border-top-color: rgba(255,255,255,0.04) !important; }
     body.dark .node-type-N .node-badge { background-color: #9E9E9E !important; }
 
-    /* dark: edges */
     body.dark .edge-path-produces { stroke: #78909C !important; }
     body.dark .edge-arrow-produces { fill: #78909C !important; }
     body.dark .edge-label-bg { fill: rgba(30,30,46,0.94) !important; }
     body.dark .edge-label-text { fill: #78909C !important; }
 
-    /* dark: tag fallback */
     body.dark .tag-fallback {
       background-color: #333 !important;
       color: #9E9E9E !important;
     }
-    /* dark: tag #FUNDAMENTAL */
     body.dark .tag-FUNDAMENTAL {
       background-color: #333 !important;
       color: #9E9E9E !important;
+    }
+
+    /* === SCALE WRAPPER === */
+    .canvas-scale-wrapper {
+      width: 720px; /* 400 * 1.8 */
+      margin: 0 auto;
+      overflow: visible;
     }
 
     /* === CANVAS CONTAINER === */
     .canvas-viewport {
       position: relative;
       margin: 20px auto;
+      transform: scale(1.8);
+      transform-origin: top left;
     }
 
     .katex { font-size: 1em; }
@@ -83,7 +83,12 @@
 
     /* === MOBILE: render como lista vertical === */
     @media (max-width: 768px) {
+      .canvas-scale-wrapper {
+        width: 100% !important;
+        overflow-x: auto;
+      }
       .canvas-viewport {
+        transform: none !important;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -109,9 +114,6 @@
       .canvas-viewport svg.edges-layer {
         display: none;
       }
-      .canvas-viewport .frame-spacer {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -123,873 +125,854 @@
       AL-0 — Mapa Panorâmico
     </h1>
     <p style="font-size:11px; color:#9ca3af; font-family:'JetBrains Mono',monospace; margin-top:4px;">
-      9 nós · 5 conexões · 2 frames
+      8 nós · 5 conexões · 2 frames
     </p>
   </header>
 
-  <!-- CANVAS AREA -->
-  <!-- Viewport calc: minX=-280, minY=80, maxX=80 (frame w 360), maxY=2568 (frame2 y1476+h1092)
-       offsetX = 280+20 = 300, offsetY = -80+20 = -60
-       viewportW = 80-(-280)+40 = 400, viewportH = 2568-80+40 = 2528 -->
-  <div class="canvas-viewport" style="width:400px; height:2528px; position:relative;">
+  <!-- CANVAS AREA — scaled 1.8x via CSS transform -->
+  <!-- Original viewport: 400x2528. Scaled: 720x4550 -->
+  <div class="canvas-scale-wrapper" style="height: 4550px;">
+    <div class="canvas-viewport" style="width:400px; height:2528px; position:relative;">
 
-    <!-- ============ FRAMES ============ -->
+      <!-- ============ FRAMES ============ -->
 
-    <!-- Frame 1: "Mapa Panorâmico — Álgebra Linear" -->
-    <!-- Original: x=-280, y=80, w=360, h=1316 → htmlX=20, htmlY=20 -->
-    <div class="canvas-frame" style="
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      width: 360px;
-      height: 1316px;
-      border: 2.5px dashed #DADCE0;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.025);
-      z-index: 0;
-    ">
-      <div style="position:absolute; top:16px; left:16px; display:flex; align-items:center; gap:10px;">
-        <span class="frame-title" style="font-size:16px; font-weight:700; color:#111827; font-family:Inter,sans-serif; line-height:1.2; letter-spacing:-0.01em;">
-          Mapa Panorâmico — Álgebra Linear
-        </span>
-        <span class="frame-count" style="font-size:10px; font-weight:600; color:#9ca3af; background:rgba(0,0,0,0.06); padding:2px 8px; border-radius:10px; font-family:Inter,sans-serif;">
-          6 nós
-        </span>
-      </div>
-    </div>
-
-    <!-- Frame 2: "§16 — Narrativa Completa" -->
-    <!-- Original: x=-280, y=1476, w=360, h=1092 → htmlX=20, htmlY=1416 -->
-    <div class="canvas-frame" style="
-      position: absolute;
-      left: 20px;
-      top: 1416px;
-      width: 360px;
-      height: 1092px;
-      border: 2.5px dashed #DADCE0;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.025);
-      z-index: 0;
-    ">
-      <div style="position:absolute; top:16px; left:16px; display:flex; align-items:center; gap:10px;">
-        <span class="frame-title" style="font-size:16px; font-weight:700; color:#111827; font-family:Inter,sans-serif; line-height:1.2; letter-spacing:-0.01em;">
-          §16 — Narrativa Completa
-        </span>
-        <span class="frame-count" style="font-size:10px; font-weight:600; color:#9ca3af; background:rgba(0,0,0,0.06); padding:2px 8px; border-radius:10px; font-family:Inter,sans-serif;">
-          2 nós
-        </span>
-      </div>
-    </div>
-
-    <!-- ============ SVG EDGES LAYER ============ -->
-    <svg class="edges-layer"
-         style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;"
-         xmlns="http://www.w3.org/2000/svg">
-
-      <!-- Edge 1: AL-1 (n...jnj8) → AL-2 (n...xz3y) | produces | intra-frame → opacity 0.5 -->
-      <!-- Source: htmlX=60, htmlY=80, w=280, h=127.53 → bottom center: (200, 207.53) -->
-      <!-- Target: htmlX=60, htmlY=288, w=280, h=127.53 → top center: (200, 288) -->
-      <!-- Vertical connection, dy=80.47, offset=min(80.47*0.35,120)=28.16 -->
-      <g>
-        <path d="M 200 207.53 C 200 235.69, 200 259.84, 200 288"
-              fill="none" stroke="#546E7A" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
-        <polygon points="200,288 195.25,279.5 204.75,279.5"
-                 fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
-      </g>
-
-      <!-- Edge 2: AL-2 → AL-3 | produces | intra-frame -->
-      <!-- Source bottom: (200, 415.53), Target top: (200, 496) -->
-      <g>
-        <path d="M 200 415.53 C 200 443.72, 200 467.81, 200 496"
-              fill="none" stroke="#546E7A" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
-        <polygon points="200,496 195.25,487.5 204.75,487.5"
-                 fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
-      </g>
-
-      <!-- Edge 3: AL-3 → AL-4 | produces | intra-frame -->
-      <!-- Source bottom: (200, 607.58), Target top: (200, 688) -->
-      <g>
-        <path d="M 200 607.58 C 200 635.77, 200 659.81, 200 688"
-              fill="none" stroke="#546E7A" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
-        <polygon points="200,688 195.25,679.5 204.75,679.5"
-                 fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
-      </g>
-
-      <!-- Edge 4: AL-4 → AL-5 | produces | intra-frame -->
-      <!-- Source bottom: (200, 799.58), Target top: (200, 880) -->
-      <g>
-        <path d="M 200 799.58 C 200 827.77, 200 851.81, 200 880"
-              fill="none" stroke="#546E7A" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
-        <polygon points="200,880 195.25,871.5 204.75,871.5"
-                 fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
-      </g>
-
-      <!-- Edge 5: AL-5 → AL-6 | produces | intra-frame -->
-      <!-- Source bottom: (200, 1007.53), Target top: (200, 1088) -->
-      <g>
-        <path d="M 200 1007.53 C 200 1035.72, 200 1059.81, 200 1088"
-              fill="none" stroke="#546E7A" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
-        <polygon points="200,1088 195.25,1079.5 204.75,1079.5"
-                 fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
-      </g>
-    </svg>
-
-    <!-- ============ NODES ============ -->
-    <!-- All nodes are N-type: bg #F5F5F5, border #757575, badge #757575, dashed, opacity 0.85 -->
-    <!-- N-type width: 280px -->
-    <!-- offsetX=300, offsetY=-60 → htmlX = node.x + 300, htmlY = node.y + (-60) -->
-    <!-- Wait, let me recalculate: minX=-280, so offsetX = -(-280)+20 = 300. minY=80, so offsetY = -(80)+20 = -60. -->
-    <!-- node.htmlX = node.x + 300, node.htmlY = node.y + (-60) = node.y - 60 -->
-
-    <!-- === NODE 1: AL-1 — Fundação (n1771821098298jnj8) === -->
-    <!-- x=-240, y=140 → htmlX=60, htmlY=80 | w=280, h=127.53 | frameId=f1771821098297uw3k -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 80px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- Frame 1: "Mapa Panorâmico — Álgebra Linear" -->
+      <!-- Original: x=-280, y=80, w=360, h=1316 → htmlX=20, htmlY=20 -->
+      <div class="canvas-frame" style="
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 360px;
+        height: 1316px;
+        border: 2.5px dashed #DADCE0;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.025);
+        z-index: 0;
       ">
-        <!-- HEADER -->
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
-        ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">AL-1 — Fundação (EV, Base, Dimensão)</span>
-          <!-- Tag: #MAPA (fallback) -->
-          <span class="tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-          ">#MAPA</span>
-        </div>
-        <!-- BODY -->
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span style="font-weight:700; color:#1a1a2e">Canvas 1</span><span>: </span><span style="font-weight:700; color:#1a1a2e">17 nós, 14 conexões. Frames</span><span>: </span><span style="font-weight:700; color:#1a1a2e">§0 — Por Que a Álgebra Linear Existe, §1 — Espaços Vetoriais, §11 — Espaços Vetoriais Abstratos</span>
-        </div>
-        <!-- FOOTER -->
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.2</span>
+        <div style="position:absolute; top:16px; left:16px; display:flex; align-items:center; gap:10px;">
+          <span class="frame-title" style="font-size:16px; font-weight:700; color:#111827; font-family:Inter,sans-serif; line-height:1.2; letter-spacing:-0.01em;">
+            Mapa Panorâmico — Álgebra Linear
+          </span>
+          <span class="frame-count" style="font-size:10px; font-weight:600; color:#9ca3af; background:rgba(0,0,0,0.06); padding:2px 8px; border-radius:10px; font-family:Inter,sans-serif;">
+            6 nós
+          </span>
         </div>
       </div>
-    </div>
 
-    <!-- === NODE 2: AL-2 — Ação (n1771821098299xz3y) === -->
-    <!-- x=-240, y=348 → htmlX=60, htmlY=288 | w=280, h=127.53 -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 288px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- Frame 2: "§16 — Narrativa Completa" -->
+      <!-- Original: x=-280, y=1476, w=360, h=1092 → htmlX=20, htmlY=1416 -->
+      <div class="canvas-frame" style="
+        position: absolute;
+        left: 20px;
+        top: 1416px;
+        width: 360px;
+        height: 1092px;
+        border: 2.5px dashed #DADCE0;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.025);
+        z-index: 0;
       ">
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
-        ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">AL-2 — Ação (TL, Matrizes)</span>
-          <span class="tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-          ">#MAPA</span>
-        </div>
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span style="font-weight:700; color:#1a1a2e">Canvas 2</span><span>: </span><span style="font-weight:700; color:#1a1a2e">22 nós, 17 conexões. Frames</span><span>: </span><span style="font-weight:700; color:#1a1a2e">§2 — Transformações Lineares, §3 — Operações com Matrizes, §10 — Mudança de Base</span>
-        </div>
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.2</span>
+        <div style="position:absolute; top:16px; left:16px; display:flex; align-items:center; gap:10px;">
+          <span class="frame-title" style="font-size:16px; font-weight:700; color:#111827; font-family:Inter,sans-serif; line-height:1.2; letter-spacing:-0.01em;">
+            §16 — Narrativa Completa
+          </span>
+          <span class="frame-count" style="font-size:10px; font-weight:600; color:#9ca3af; background:rgba(0,0,0,0.06); padding:2px 8px; border-radius:10px; font-family:Inter,sans-serif;">
+            2 nós
+          </span>
         </div>
       </div>
-    </div>
 
-    <!-- === NODE 3: AL-3 — Análise (n17718210983000er9) === -->
-    <!-- x=-240, y=556 → htmlX=60, htmlY=496 | w=280, h=111.58 -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 496px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- ============ SVG EDGES LAYER ============ -->
+      <svg class="edges-layer"
+           style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;"
+           xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Edge 1: AL-1 → AL-2 | produces | intra-frame → opacity 0.5 -->
+        <!-- Source bottom center: (200, 207.53), Target top center: (200, 288) -->
+        <g>
+          <path d="M 200 207.53 C 200 235.69, 200 259.84, 200 288"
+                fill="none" stroke="#546E7A" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
+          <polygon points="200,288 195.25,279.5 204.75,279.5"
+                   fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
+        </g>
+
+        <!-- Edge 2: AL-2 → AL-3 | produces | intra-frame -->
+        <g>
+          <path d="M 200 415.53 C 200 443.72, 200 467.81, 200 496"
+                fill="none" stroke="#546E7A" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
+          <polygon points="200,496 195.25,487.5 204.75,487.5"
+                   fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
+        </g>
+
+        <!-- Edge 3: AL-3 → AL-4 | produces | intra-frame -->
+        <g>
+          <path d="M 200 607.58 C 200 635.77, 200 659.81, 200 688"
+                fill="none" stroke="#546E7A" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
+          <polygon points="200,688 195.25,679.5 204.75,679.5"
+                   fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
+        </g>
+
+        <!-- Edge 4: AL-4 → AL-5 | produces | intra-frame -->
+        <g>
+          <path d="M 200 799.58 C 200 827.77, 200 851.81, 200 880"
+                fill="none" stroke="#546E7A" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
+          <polygon points="200,880 195.25,871.5 204.75,871.5"
+                   fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
+        </g>
+
+        <!-- Edge 5: AL-5 → AL-6 | produces | intra-frame -->
+        <g>
+          <path d="M 200 1007.53 C 200 1035.72, 200 1059.81, 200 1088"
+                fill="none" stroke="#546E7A" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" opacity="0.5" class="edge-path-produces"/>
+          <polygon points="200,1088 195.25,1079.5 204.75,1079.5"
+                   fill="#546E7A" opacity="0.5" class="edge-arrow-produces"/>
+        </g>
+      </svg>
+
+      <!-- ============ NODES ============ -->
+
+      <!-- === NODE 1: AL-1 — Fundação === -->
+      <!-- x=-240, y=140 → htmlX=60, htmlY=80 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 80px;
+        width: 280px;
+        z-index: 2;
       ">
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
         ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">AL-3 — Análise (Determinante, Sistemas)</span>
-          <span class="tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
+          <div class="node-header" style="
+            display: flex;
             align-items: center;
-          ">#MAPA</span>
-        </div>
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span style="font-weight:700; color:#1a1a2e">Canvas 3</span><span>: </span><span style="font-weight:700; color:#1a1a2e">22 nós, 22 conexões. Frames</span><span>: </span><span style="font-weight:700; color:#1a1a2e">§4 — Determinante, §5 — Sistemas Lineares</span>
-        </div>
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.2</span>
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">AL-1 — Fundação (EV, Base, Dimensão)</span>
+            <span class="tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#MAPA</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span class="bold-text" style="font-weight:700; color:#1a1a2e">Canvas 1</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">17 nós, 14 conexões. Frames</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">§0 — Por Que a Álgebra Linear Existe, §1 — Espaços Vetoriais, §11 — Espaços Vetoriais Abstratos</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.2</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- === NODE 4: AL-4 — Geometria (n1771821098301kinq) === -->
-    <!-- x=-240, y=748 → htmlX=60, htmlY=688 | w=280, h=111.58 -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 688px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- === NODE 2: AL-2 — Ação === -->
+      <!-- x=-240, y=348 → htmlX=60, htmlY=288 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 288px;
+        width: 280px;
+        z-index: 2;
       ">
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
         ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">AL-4 — Geometria (PI, Ortogonalidade)</span>
-          <span class="tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
+          <div class="node-header" style="
+            display: flex;
             align-items: center;
-          ">#MAPA</span>
-        </div>
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span style="font-weight:700; color:#1a1a2e">Canvas 4</span><span>: </span><span style="font-weight:700; color:#1a1a2e">12 nós, 11 conexões. Frames</span><span>: </span><span style="font-weight:700; color:#1a1a2e">§6 — Produto Interno, §7 — Ortogonalidade</span>
-        </div>
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.2</span>
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">AL-2 — Ação (TL, Matrizes)</span>
+            <span class="tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#MAPA</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span class="bold-text" style="font-weight:700; color:#1a1a2e">Canvas 2</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">22 nós, 17 conexões. Frames</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">§2 — Transformações Lineares, §3 — Operações com Matrizes, §10 — Mudança de Base</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.2</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- === NODE 5: AL-5 — Espectro (n1771821098302m3mn) === -->
-    <!-- x=-240, y=940 → htmlX=60, htmlY=880 | w=280, h=127.53 -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 880px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- === NODE 3: AL-3 — Análise === -->
+      <!-- x=-240, y=556 → htmlX=60, htmlY=496 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 496px;
+        width: 280px;
+        z-index: 2;
       ">
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
         ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">AL-5 — Espectro (Autovalores, Diag.)</span>
-          <span class="tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
+          <div class="node-header" style="
+            display: flex;
             align-items: center;
-          ">#MAPA</span>
-        </div>
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span style="font-weight:700; color:#1a1a2e">Canvas 5</span><span>: </span><span style="font-weight:700; color:#1a1a2e">18 nós, 16 conexões. Frames</span><span>: </span><span style="font-weight:700; color:#1a1a2e">§8 — Autovalores e Autovetores, §9 — Diagonalização, §12 — Formas Quadráticas</span>
-        </div>
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.2</span>
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">AL-3 — Análise (Determinante, Sistemas)</span>
+            <span class="tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#MAPA</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span class="bold-text" style="font-weight:700; color:#1a1a2e">Canvas 3</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">22 nós, 22 conexões. Frames</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">§4 — Determinante, §5 — Sistemas Lineares</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.2</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- === NODE 6: AL-6 — Arsenal (n17718210983037fcy) === -->
-    <!-- x=-240, y=1148 → htmlX=60, htmlY=1088 | w=280, h=143.47 -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 1088px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- === NODE 4: AL-4 — Geometria === -->
+      <!-- x=-240, y=748 → htmlX=60, htmlY=688 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 688px;
+        width: 280px;
+        z-index: 2;
       ">
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
         ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">AL-6 — Arsenal (Decomposições, MQ)</span>
-          <span class="tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
+          <div class="node-header" style="
+            display: flex;
             align-items: center;
-          ">#MAPA</span>
-        </div>
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span style="font-weight:700; color:#1a1a2e">Canvas 6</span><span>: </span><span style="font-weight:700; color:#1a1a2e">23 nós, 21 conexões. Frames</span><span>: </span><span style="font-weight:700; color:#1a1a2e">§13 — Decomposições Matriciais, §14 — Mínimos Quadrados, §15 — Traço &amp; Propriedades Globais</span>
-        </div>
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.2</span>
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">AL-4 — Geometria (PI, Ortogonalidade)</span>
+            <span class="tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#MAPA</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span class="bold-text" style="font-weight:700; color:#1a1a2e">Canvas 4</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">12 nós, 11 conexões. Frames</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">§6 — Produto Interno, §7 — Ortogonalidade</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.2</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- === NODE 7: §16 — A Narrativa Completa (n1771804967984ffwr) === -->
-    <!-- x=-240, y=1536 → htmlX=60, htmlY=1476 | w=280, h=510.22 | frameId=n1771804541230szdj -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 1476px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- === NODE 5: AL-5 — Espectro === -->
+      <!-- x=-240, y=940 → htmlX=60, htmlY=880 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 880px;
+        width: 280px;
+        z-index: 2;
       ">
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
         ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">§16 — A Narrativa Completa</span>
-          <!-- Tag: #RUBAO (fallback) -->
-          <span class="tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
+          <div class="node-header" style="
+            display: flex;
             align-items: center;
-          ">#RUBAO</span>
-        </div>
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span>O </span><span style="font-weight:700; color:#1a1a2e">Fio Condutor</span><span> da </span><span style="font-weight:700; color:#1a1a2e">Álgebra Linear</span><span>:</span><br><br><span style="font-weight:700; color:#1a1a2e">Ato</span><span> 1 — </span><span style="font-weight:700; color:#1a1a2e">Fundação</span><span>: </span><span style="font-weight:700; color:#1a1a2e">Espaços</span><span> vetoriais dão o palco. </span><span style="font-weight:700; color:#1a1a2e">Bases</span><span> e dimensão medem o tamanho.</span><br><br><span style="font-weight:700; color:#1a1a2e">Ato</span><span> 2 — </span><span style="font-weight:700; color:#1a1a2e">Ação</span><span>: </span><span style="font-weight:700; color:#1a1a2e">Transformações</span><span> lineares são os atores. </span><span style="font-weight:700; color:#1a1a2e">Matrizes</span><span> são seus scripts.</span><br><br><span style="font-weight:700; color:#1a1a2e">Ato</span><span> 3 — </span><span style="font-weight:700; color:#1a1a2e">Análise</span><span>: </span><span style="font-weight:700; color:#1a1a2e">Determinante</span><span> mede volume. </span><span style="font-weight:700; color:#1a1a2e">Sistemas</span><span> lineares são o problema original.</span><br><br><span style="font-weight:700; color:#1a1a2e">Ato</span><span> 4 — </span><span style="font-weight:700; color:#1a1a2e">Geometria</span><span>: </span><span style="font-weight:700; color:#1a1a2e">Produto</span><span> interno dá régua. </span><span style="font-weight:700; color:#1a1a2e">Ortogonalidade</span><span> dá perpendicular.</span><br><br><span style="font-weight:700; color:#1a1a2e">Ato</span><span> 5 — </span><span style="font-weight:700; color:#1a1a2e">Espectro</span><span>: </span><span style="font-weight:700; color:#1a1a2e">Autovalores</span><span> revelam a essência. </span><span style="font-weight:700; color:#1a1a2e">Diagonalização</span><span> simplifica tudo.</span><br><br><span style="font-weight:700; color:#1a1a2e">Ato</span><span> 6 — </span><span style="font-weight:700; color:#1a1a2e">Arsenal</span><span>: </span><span style="font-weight:700; color:#1a1a2e">LU</span><span> resolve rápido. </span><span style="font-weight:700; color:#1a1a2e">QR</span><span> ortogonaliza. </span><span style="font-weight:700; color:#1a1a2e">SVD</span><span> decompõe qualquer coisa. </span><span style="font-weight:700; color:#1a1a2e">Mínimos</span><span> quadrados resolve o impossível.</span><br><br><span style="font-weight:700; color:#1a1a2e">Ato Final</span><span>: </span><span data-katex="A = U\Sigma V^T" style="display:inline; vertical-align:baseline;"></span><span> — toda a informação de qualquer matriz, em três peças.</span><br><br><span>🔥 </span><span style="font-weight:700; color:#757575">Rubão</span><span>: &quot;De </span><span data-katex="Ax = b" style="display:inline; vertical-align:baseline;"></span><span> até </span><span data-katex="A = U\Sigma V^T" style="display:inline; vertical-align:baseline;"></span><span>. </span><span style="font-weight:700; color:#1a1a2e">Começou</span><span> querendo resolver um sistema e terminou com o raio-X completo da realidade linear.&quot;</span>
-        </div>
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.1</span>
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">AL-5 — Espectro (Autovalores, Diag.)</span>
+            <span class="tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#MAPA</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span class="bold-text" style="font-weight:700; color:#1a1a2e">Canvas 5</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">18 nós, 16 conexões. Frames</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">§8 — Autovalores e Autovetores, §9 — Diagonalização, §12 — Formas Quadráticas</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.2</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- === NODE 8: Mapa Mental: Conexões-Chave (n1771804974030cdw5) === -->
-    <!-- x=-240, y=2072 → htmlX=60, htmlY=2012 | w=280, h=382.66 | frameId=n1771804541230szdj -->
-    <div class="canvas-node node-type-N" style="
-      position: absolute;
-      left: 60px;
-      top: 2012px;
-      width: 280px;
-      z-index: 2;
-    ">
-      <div class="node-inner" style="
-        background-color: #F5F5F5;
-        border-radius: 10px;
-        border-top: 1px dashed rgba(117,117,117,0.3);
-        border-right: 1px dashed rgba(117,117,117,0.3);
-        border-bottom: 1px dashed rgba(117,117,117,0.3);
-        border-left: 3px solid #757575;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        overflow: hidden;
-        font-family: Inter, sans-serif;
-        opacity: 0.85;
+      <!-- === NODE 6: AL-6 — Arsenal === -->
+      <!-- x=-240, y=1148 → htmlX=60, htmlY=1088 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 1088px;
+        width: 280px;
+        z-index: 2;
       ">
-        <div class="node-header" style="
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          background: rgba(0,0,0,0.03);
-          border-bottom: 1px solid rgba(0,0,0,0.05);
-          min-height: 32px;
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
         ">
-          <span class="node-badge" style="
-            background-color: #757575;
-            color: #FFFFFF;
-            font-size: 9px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-          ">NOTA</span>
-          <span class="node-title" style="
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            line-height: 1.3;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-          ">Mapa Mental: Conexões-Chave</span>
-          <!-- Tag: #FUNDAMENTAL (fallback) -->
-          <span class="tag-FUNDAMENTAL tag-fallback" style="
-            background-color: #F5F5F5;
-            color: #616161;
-            font-size: 9px;
-            font-family: Inter, sans-serif;
-            font-weight: 500;
-            line-height: 1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: inline-flex;
+          <div class="node-header" style="
+            display: flex;
             align-items: center;
-          ">#FUNDAMENTAL</span>
-        </div>
-        <div class="node-body" style="
-          padding: 10px 12px;
-          font-size: 11px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.45;
-        ">
-          <span>Equivalências </span><span style="font-weight:700; color:#1a1a2e">Fundamentais</span><span> (A ∈ M_{n×n}):</span><br><br><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> invertível</span><br><span data-katex="\iff \det(A) \neq 0" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff \text{rank}(A) = n" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff \ker(A) = \{0\}" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff" style="display:inline; vertical-align:baseline;"></span><span> colunas </span><span style="font-weight:700; color:#1a1a2e">LI</span><br><span data-katex="\iff" style="display:inline; vertical-align:baseline;"></span><span> linhas </span><span style="font-weight:700; color:#1a1a2e">LI</span><br><span data-katex="\iff Ax=b" style="display:inline; vertical-align:baseline;"></span><span> tem solução única </span><span data-katex="\forall b" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff 0" style="display:inline; vertical-align:baseline;"></span><span> </span><span style="font-weight:700; color:#757575">NÃO</span><span> é autovalor</span><br><span data-katex="\iff" style="display:inline; vertical-align:baseline;"></span><span> todos os valores singulares </span><span data-katex="> 0" style="display:inline; vertical-align:baseline;"></span><br><br><span style="font-weight:700; color:#1a1a2e">Hierarquia</span><span> de decomposições:</span><br><span>- </span><span style="font-weight:700; color:#1a1a2e">LU</span><span>: qualquer </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> (com pivoteamento)</span><br><span>- </span><span style="font-weight:700; color:#1a1a2e">QR</span><span>: qualquer </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> (via Gram-Schmidt)</span><br><span>- </span><span style="font-weight:700; color:#1a1a2e">Cholesky</span><span>: </span><span data-katex="A = A^T > 0" style="display:inline; vertical-align:baseline;"></span><span> (positiva definida)</span><br><span>- </span><span style="font-weight:700; color:#1a1a2e">Diagonalização</span><span>: </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> com </span><span data-katex="n" style="display:inline; vertical-align:baseline;"></span><span> autovetores </span><span style="font-weight:700; color:#1a1a2e">LI</span><br><span>- </span><span style="font-weight:700; color:#1a1a2e">Espectral</span><span>: </span><span data-katex="A = A^T" style="display:inline; vertical-align:baseline;"></span><span> (simétrica)</span><br><span>- </span><span style="font-weight:700; color:#1a1a2e">SVD</span><span>: </span><span style="font-weight:700; color:#1a1a2e">QUALQUER</span><span> </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> ← a mais geral</span>
-        </div>
-        <div class="node-footer" style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 6px 12px;
-          border-top: 1px solid rgba(0,0,0,0.04);
-          font-size: 9px;
-          font-family: 'JetBrains Mono', monospace;
-          color: #9ca3af;
-          line-height: 1.2;
-        ">
-          <span>[C] confiável</span>
-          <span>v0.1</span>
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">AL-6 — Arsenal (Decomposições, MQ)</span>
+            <span class="tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#MAPA</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span class="bold-text" style="font-weight:700; color:#1a1a2e">Canvas 6</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">23 nós, 21 conexões. Frames</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">§13 — Decomposições Matriciais, §14 — Mínimos Quadrados, §15 — Traço &amp; Propriedades Globais</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.2</span>
+          </div>
         </div>
       </div>
+
+      <!-- === NODE 7: §16 — A Narrativa Completa === -->
+      <!-- x=-240, y=1536 → htmlX=60, htmlY=1476 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 1476px;
+        width: 280px;
+        z-index: 2;
+      ">
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
+        ">
+          <div class="node-header" style="
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">§16 — A Narrativa Completa</span>
+            <span class="tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#RUBAO</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span>O </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Fio Condutor</span><span> da </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Álgebra Linear</span><span>:</span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ato</span><span> 1 — </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Fundação</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Espaços</span><span> vetoriais dão o palco. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Bases</span><span> e dimensão medem o tamanho.</span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ato</span><span> 2 — </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ação</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Transformações</span><span> lineares são os atores. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Matrizes</span><span> são seus scripts.</span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ato</span><span> 3 — </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Análise</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Determinante</span><span> mede volume. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Sistemas</span><span> lineares são o problema original.</span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ato</span><span> 4 — </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Geometria</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Produto</span><span> interno dá régua. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ortogonalidade</span><span> dá perpendicular.</span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ato</span><span> 5 — </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Espectro</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Autovalores</span><span> revelam a essência. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Diagonalização</span><span> simplifica tudo.</span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ato</span><span> 6 — </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Arsenal</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">LU</span><span> resolve rápido. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">QR</span><span> ortogonaliza. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">SVD</span><span> decompõe qualquer coisa. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Mínimos</span><span> quadrados resolve o impossível.</span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Ato Final</span><span>: </span><span data-katex="A = U\Sigma V^T" style="display:inline; vertical-align:baseline;"></span><span> — toda a informação de qualquer matriz, em três peças.</span><br><br><span>🔥 </span><span class="decision-text" style="font-weight:700; color:#757575">Rubão</span><span>: &quot;De </span><span data-katex="Ax = b" style="display:inline; vertical-align:baseline;"></span><span> até </span><span data-katex="A = U\Sigma V^T" style="display:inline; vertical-align:baseline;"></span><span>. </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Começou</span><span> querendo resolver um sistema e terminou com o raio-X completo da realidade linear.&quot;</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- === NODE 8: Mapa Mental: Conexões-Chave === -->
+      <!-- x=-240, y=2072 → htmlX=60, htmlY=2012 -->
+      <div class="canvas-node node-type-N" style="
+        position: absolute;
+        left: 60px;
+        top: 2012px;
+        width: 280px;
+        z-index: 2;
+      ">
+        <div class="node-inner" style="
+          background-color: #F5F5F5;
+          border-radius: 10px;
+          border-top: 1px dashed rgba(117,117,117,0.3);
+          border-right: 1px dashed rgba(117,117,117,0.3);
+          border-bottom: 1px dashed rgba(117,117,117,0.3);
+          border-left: 3px solid #757575;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          overflow: hidden;
+          font-family: Inter, sans-serif;
+          opacity: 0.85;
+        ">
+          <div class="node-header" style="
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            min-height: 32px;
+          ">
+            <span class="node-badge" style="
+              background-color: #757575;
+              color: #FFFFFF;
+              font-size: 9px;
+              font-weight: 700;
+              line-height: 1;
+              padding: 3px 6px;
+              border-radius: 3px;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            ">NOTA</span>
+            <span class="node-title" style="
+              font-size: 13px;
+              font-weight: 700;
+              color: #111827;
+              line-height: 1.3;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+              min-width: 0;
+            ">Mapa Mental: Conexões-Chave</span>
+            <span class="tag-FUNDAMENTAL tag-fallback" style="
+              background-color: #F5F5F5;
+              color: #616161;
+              font-size: 9px;
+              font-family: Inter, sans-serif;
+              font-weight: 500;
+              line-height: 1;
+              padding: 2px 5px;
+              border-radius: 4px;
+              white-space: nowrap;
+              display: inline-flex;
+              align-items: center;
+            ">#FUNDAMENTAL</span>
+          </div>
+          <div class="node-body" style="
+            padding: 10px 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.45;
+          ">
+            <span>Equivalências </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Fundamentais</span><span> (A ∈ M_{n×n}):</span><br><br><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> invertível</span><br><span data-katex="\iff \det(A) \neq 0" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff \text{rank}(A) = n" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff \ker(A) = \{0\}" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff" style="display:inline; vertical-align:baseline;"></span><span> colunas </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">LI</span><br><span data-katex="\iff" style="display:inline; vertical-align:baseline;"></span><span> linhas </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">LI</span><br><span data-katex="\iff Ax=b" style="display:inline; vertical-align:baseline;"></span><span> tem solução única </span><span data-katex="\forall b" style="display:inline; vertical-align:baseline;"></span><br><span data-katex="\iff 0" style="display:inline; vertical-align:baseline;"></span><span> </span><span class="decision-text" style="font-weight:700; color:#757575">NÃO</span><span> é autovalor</span><br><span data-katex="\iff" style="display:inline; vertical-align:baseline;"></span><span> todos os valores singulares </span><span data-katex="> 0" style="display:inline; vertical-align:baseline;"></span><br><br><span class="bold-text" style="font-weight:700; color:#1a1a2e">Hierarquia</span><span> de decomposições:</span><br><span>- </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">LU</span><span>: qualquer </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> (com pivoteamento)</span><br><span>- </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">QR</span><span>: qualquer </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> (via Gram-Schmidt)</span><br><span>- </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Cholesky</span><span>: </span><span data-katex="A = A^T > 0" style="display:inline; vertical-align:baseline;"></span><span> (positiva definida)</span><br><span>- </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Diagonalização</span><span>: </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> com </span><span data-katex="n" style="display:inline; vertical-align:baseline;"></span><span> autovetores </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">LI</span><br><span>- </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">Espectral</span><span>: </span><span data-katex="A = A^T" style="display:inline; vertical-align:baseline;"></span><span> (simétrica)</span><br><span>- </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">SVD</span><span>: </span><span class="bold-text" style="font-weight:700; color:#1a1a2e">QUALQUER</span><span> </span><span data-katex="A" style="display:inline; vertical-align:baseline;"></span><span> ← a mais geral</span>
+          </div>
+          <div class="node-footer" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ca3af;
+            line-height: 1.2;
+          ">
+            <span>[C] confiável</span>
+            <span>v0.1</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- === NODE 9: hidden for mobile ordering — this is just a spacer between frames === -->
-
   </div>
 
   <!-- DARK MODE + KaTeX -->
