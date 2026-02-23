@@ -1,0 +1,197 @@
+{
+  "version": 2,
+  "id": "al-canvas-0",
+  "name": "AL-0 — Mapa Panorâmico",
+  "created": "2026-02-23T04:31:38.150Z",
+  "modified": "2026-02-23T14:08:52.906Z",
+  "nodes": [
+    {
+      "id": "n1771804967984ffwr",
+      "type": "N",
+      "title": "§16 — A Narrativa Completa",
+      "body": "O **Fio Condutor** da **Álgebra Linear**:\n\n**Ato** 1 — **Fundação**: **Espaços** vetoriais dão o palco. **Bases** e dimensão medem o tamanho.\n\n**Ato** 2 — **Ação**: **Transformações** lineares são os atores. **Matrizes** são seus scripts.\n\n**Ato** 3 — **Análise**: **Determinante** mede volume. **Sistemas** lineares são o problema original.\n\n**Ato** 4 — **Geometria**: **Produto** interno dá régua. **Ortogonalidade** dá perpendicular.\n\n**Ato** 5 — **Espectro**: **Autovalores** revelam a essência. **Diagonalização** simplifica tudo.\n\n**Ato** 6 — **Arsenal**: **LU** resolve rápido. **QR** ortogonaliza. **SVD** decompõe qualquer coisa. **Mínimos** quadrados resolve o impossível.\n\n**Ato Final**: $A = U\\Sigma V^T$ — toda a informação de qualquer matriz, em três peças.\n\n🔥 **Rubão**: \"De $Ax = b$ até $A = U\\Sigma V^T$. **Começou** querendo resolver um sistema e terminou com o raio-X completo da realidade linear.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1536,
+      "w": 280,
+      "h": 510.21875,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804541230szdj"
+    },
+    {
+      "id": "n1771804974030cdw5",
+      "type": "N",
+      "title": "Mapa Mental: Conexões-Chave",
+      "body": "Equivalências **Fundamentais** (A ∈ M_{n×n}):\n\n$A$ invertível\n$\\iff \\det(A) \\neq 0$\n$\\iff \\text{rank}(A) = n$\n$\\iff \\ker(A) = \\{0\\}$\n$\\iff$ colunas **LI**\n$\\iff$ linhas **LI**\n$\\iff Ax=b$ tem solução única $\\forall b$\n$\\iff 0$ **NÃO** é autovalor\n$\\iff$ todos os valores singulares $> 0$\n\n**Hierarquia** de decomposições:\n- **LU**: qualquer $A$ (com pivoteamento)\n- **QR**: qualquer $A$ (via Gram-Schmidt)\n- **Cholesky**: $A = A^T > 0$ (positiva definida)\n- **Diagonalização**: $A$ com $n$ autovetores **LI**\n- **Espectral**: $A = A^T$ (simétrica)\n- **SVD**: **QUALQUER** $A$ ← a mais geral",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": -240,
+      "y": 2072,
+      "w": 280,
+      "h": 382.65625,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804541230szdj"
+    },
+    {
+      "id": "n1771821098298jnj8",
+      "type": "N",
+      "title": "AL-1 — Fundação (EV, Base, Dimensão)",
+      "body": "**Canvas 1**: **17 nós, 14 conexões. Frames**: **§0 — Por Que a Álgebra Linear Existe, §1 — Espaços Vetoriais, §11 — Espaços Vetoriais Abstratos**",
+      "tags": [
+        "#MAPA"
+      ],
+      "x": -240,
+      "y": 140,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "f1771821098297uw3k"
+    },
+    {
+      "id": "n1771821098299xz3y",
+      "type": "N",
+      "title": "AL-2 — Ação (TL, Matrizes)",
+      "body": "**Canvas 2**: **22 nós, 17 conexões. Frames**: **§2 — Transformações Lineares, §3 — Operações com Matrizes, §10 — Mudança de Base**",
+      "tags": [
+        "#MAPA"
+      ],
+      "x": -240,
+      "y": 348,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "f1771821098297uw3k"
+    },
+    {
+      "id": "n17718210983000er9",
+      "type": "N",
+      "title": "AL-3 — Análise (Determinante, Sistemas)",
+      "body": "**Canvas 3**: **22 nós, 22 conexões. Frames**: **§4 — Determinante, §5 — Sistemas Lineares**",
+      "tags": [
+        "#MAPA"
+      ],
+      "x": -240,
+      "y": 556,
+      "w": 280,
+      "h": 111.578125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "f1771821098297uw3k"
+    },
+    {
+      "id": "n1771821098301kinq",
+      "type": "N",
+      "title": "AL-4 — Geometria (PI, Ortogonalidade)",
+      "body": "**Canvas 4**: **12 nós, 11 conexões. Frames**: **§6 — Produto Interno, §7 — Ortogonalidade**",
+      "tags": [
+        "#MAPA"
+      ],
+      "x": -240,
+      "y": 748,
+      "w": 280,
+      "h": 111.578125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "f1771821098297uw3k"
+    },
+    {
+      "id": "n1771821098302m3mn",
+      "type": "N",
+      "title": "AL-5 — Espectro (Autovalores, Diag.)",
+      "body": "**Canvas 5**: **18 nós, 16 conexões. Frames**: **§8 — Autovalores e Autovetores, §9 — Diagonalização, §12 — Formas Quadráticas**",
+      "tags": [
+        "#MAPA"
+      ],
+      "x": -240,
+      "y": 940,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "f1771821098297uw3k"
+    },
+    {
+      "id": "n17718210983037fcy",
+      "type": "N",
+      "title": "AL-6 — Arsenal (Decomposições, MQ)",
+      "body": "**Canvas 6**: **23 nós, 21 conexões. Frames**: **§13 — Decomposições Matriciais, §14 — Mínimos Quadrados, §15 — Traço & Propriedades Globais**",
+      "tags": [
+        "#MAPA"
+      ],
+      "x": -240,
+      "y": 1148,
+      "w": 280,
+      "h": 143.46875,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "f1771821098297uw3k"
+    }
+  ],
+  "conns": [
+    {
+      "id": "c17718210983042v3o",
+      "type": "produces",
+      "sourceId": "n1771821098298jnj8",
+      "targetId": "n1771821098299xz3y",
+      "label": ""
+    },
+    {
+      "id": "c1771821098305d9n8",
+      "type": "produces",
+      "sourceId": "n1771821098299xz3y",
+      "targetId": "n17718210983000er9",
+      "label": ""
+    },
+    {
+      "id": "c1771821098306f4p6",
+      "type": "produces",
+      "sourceId": "n17718210983000er9",
+      "targetId": "n1771821098301kinq",
+      "label": ""
+    },
+    {
+      "id": "c1771821098307tmdj",
+      "type": "produces",
+      "sourceId": "n1771821098301kinq",
+      "targetId": "n1771821098302m3mn",
+      "label": ""
+    },
+    {
+      "id": "c17718210983087s9y",
+      "type": "produces",
+      "sourceId": "n1771821098302m3mn",
+      "targetId": "n17718210983037fcy",
+      "label": ""
+    }
+  ],
+  "frames": [
+    {
+      "id": "f1771821098297uw3k",
+      "title": "Mapa Panorâmico — Álgebra Linear",
+      "x": -280,
+      "y": 80,
+      "width": 360,
+      "height": 1316
+    },
+    {
+      "id": "n1771804541230szdj",
+      "title": "§16 — Narrativa Completa",
+      "x": -280,
+      "y": 1476,
+      "width": 360,
+      "height": 1092
+    }
+  ],
+  "viewport": {
+    "x": 361.3772237571094,
+    "y": -1292.2400243501338,
+    "z": 1.1015892743839653
+  }
+}

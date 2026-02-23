@@ -1,0 +1,553 @@
+{
+  "version": 2,
+  "id": "al-canvas-6",
+  "name": "AL-6 — Arsenal (Decomposições, MQ)",
+  "created": "2026-02-23T04:31:38.153Z",
+  "modified": "2026-02-23T04:50:16.470Z",
+  "nodes": [
+    {
+      "id": "n17718049224141nh8",
+      "type": "D",
+      "title": "Decomposição LU",
+      "body": "**Definição**. $A = LU$ onde:\n- $L$ = triangular inferior com 1's na diagonal\n- $U$ = triangular superior (escalonada)\n\n**Quando existe**: **Se todas as submatrizes principais de $A$ são invertíveis (pivôs não-zero sem troca de linhas). Com pivoteamento: $PA = LU$ (P = permutação) Uso: Resolver $Ax = b$ vira:**\n1. $Ly = b$ (substituição progressiva)\n2. $Ux = y$ (substituição regressiva)\n\n**Custo**: **$\\frac{2n^3}{3}$ operações para fatorar, $O(n^2)$ para cada $b$ novo.**",
+      "tags": [],
+      "x": 100,
+      "y": 140,
+      "w": 300,
+      "h": 286.984375,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771804939413u7xr",
+      "type": "D",
+      "title": "Decomposição de Cholesky",
+      "body": "**Teorema**. **Se** $A$ é simétrica e positiva definida, então:\n\n$$A = LL^T$$\n\nonde $L$ é triangular inferior com diagonal positiva. **Única. Custo:** $\\frac{n^3}{3}$ operações (metade da LU!)\n\n**Teste de positividade:** Se Cholesky funciona (sem raízes de negativos), $A$ é positiva definida.",
+      "tags": [],
+      "x": 450,
+      "y": 140,
+      "w": 300,
+      "h": 239.140625,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771804927494g846",
+      "type": "D",
+      "title": "Decomposição QR",
+      "body": "**Definição**. $A = QR$ onde:\n- $Q$ = ortogonal ($Q^TQ = I$), colunas ortonormais\n- $R$ = triangular superior\n\n**Construção**: Gram-Schmidt nas colunas de $A$:\n- **Colunas** de $Q$ = resultado do Gram-Schmidt\n- $R_{ij} = \\langle a_j, q_i \\rangle$\n\n**Usos**:\n- **Resolver** sistemas $Ax = b$: $QRx = b \\Rightarrow Rx = Q^Tb$\n- **Algoritmo QR** para autovalores\n- **Mínimos** quadrados: mais **estável** que equações normais\n\n**",
+      "tags": [],
+      "x": 800,
+      "y": 140,
+      "w": 300,
+      "h": 302.921875,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771804954301s9v0",
+      "type": "Q",
+      "title": "Pseudo-Inversa de Moore-Penrose",
+      "body": "**Definição**. A pseudo-inversa $A^+$ é a única matriz que satisfaz:\n1. $AA^+A = A$\n2. $A^+AA^+ = A^+$\n3. $(AA^+)^T = AA^+$\n4. $(A^+A)^T = A^+A$\n\n**Via SVD**: **Se** $A = U\\Sigma V^T$:\n$$A^+ = V\\Sigma^+ U^T$$\nonde $\\Sigma^+$ inverte os $\\sigma_i \\neq 0$ e mantém zeros.\n\n**Solução de mínimos quadrados:** $\\hat{x} = A^+ b$ (mínima norma entre todas as soluções de min $\\|Ax-b\\|$)",
+      "tags": [],
+      "x": 100,
+      "y": 2032,
+      "w": 300,
+      "h": 286.984375,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804537627jqhr"
+    },
+    {
+      "id": "n17718049600469dbt",
+      "type": "D",
+      "title": "Traço & Propriedades Globais",
+      "body": "Traço: $\\text{tr}(A) = \\sum_{i=1}^n a_{ii}$ (soma da diagonal)\n\n**Propriedades** fundamentais:\n$$\\text{tr}(A+B) = \\text{tr}(A) + \\text{tr}(B)$$\n$$\\text{tr}(\\alpha A) = \\alpha \\cdot \\text{tr}(A)$$\n$$\\text{tr}(AB) = \\text{tr}(BA) \\quad \\text{(propriedade cíclica)}$$\n$$\\text{tr}(ABC) = \\text{tr}(CAB) = \\text{tr}(BCA)$$\n$$\\text{tr}(P^{-1}AP) = \\text{tr}(A) \\quad \\text{(invariante por semelhança)}$$\n\n**Conexão com autovalores:**\n$$\\text{tr}(A) = \\sum_{i=1}^n \\lambda_i$$\n$$\\det(A) = \\prod_{i=1}^n \\lambda_i$$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 2784,
+      "w": 300,
+      "h": 271.03125,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804539639pwr9"
+    },
+    {
+      "id": "n1771821098170dxuv",
+      "type": "D",
+      "title": "Valores Singulares",
+      "body": "**Definição**. **Os** *valores singulares* de $A \\in M_{m \\times n}$ são:\n$$\\sigma_i = \\sqrt{\\lambda_i(A^T A)}, \\quad \\sigma_1 \\geq \\sigma_2 \\geq \\cdots \\geq 0$$\nonde $\\lambda_i(A^T A)$ são os autovalores de $A^T A$ (sempre $\\geq 0$).",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 1150,
+      "y": 140,
+      "w": 300,
+      "h": 159.421875,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771821098171ut3u",
+      "type": "R",
+      "title": "Teorema SVD",
+      "body": "**Teorema**. **Toda** matriz $A \\in M_{m \\times n}$ admite decomposição:\n$$A = U \\Sigma V^T$$\n- $U \\in M_{m \\times m}$ ortogonal (autovetores de $AA^T$)\n- $\\Sigma \\in M_{m \\times n}$ diagonal ($\\sigma_1, \\ldots, \\sigma_r$ na diagonal)\n- $V \\in M_{n \\times n}$ ortogonal (autovetores de $A^T A$)\n- $r = \\text{rank}(A)$",
+      "tags": [
+        "#TEOREMA",
+        "#FUNDAMENTAL",
+        "#MEMORIZAR"
+      ],
+      "x": 100,
+      "y": 528,
+      "w": 300,
+      "h": 191.3125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n17718210981721i00",
+      "type": "R",
+      "title": "Aproximação de Posto Baixo (Eckart-Young)",
+      "body": "**Teorema** (Eckart-Young). A melhor aproximação de posto $k$ de $A$ (na norma de **Frobenius**) é:\n$$A_k = \\sum_{i=1}^{k} \\sigma_i u_i v_i^T$$\n\n**Aplicações**: **PCA**, compressão de imagens, redução de dimensionalidade.",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 450,
+      "y": 528,
+      "w": 300,
+      "h": 175.359375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771821098175uvub",
+      "type": "D",
+      "title": "Equações Normais",
+      "body": "**Definição**. **Para** o sistema sobredeterminado $Ax \\approx b$ (sem solução exata), as *equações normais* são:\n$$A^T A \\hat{x} = A^T b$$\n\nA solução $\\hat{x}$ minimiza $\\|Ax - b\\|^2$.",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 1792,
+      "w": 300,
+      "h": 159.421875,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804537627jqhr"
+    },
+    {
+      "id": "n1771821098176bzy7",
+      "type": "R",
+      "title": "Teorema de Mínimos Quadrados",
+      "body": "**Teorema**. $\\hat{x}$ minimiza $\\|Ax - b\\|^2$ $\\iff$ $\\hat{x}$ satisfaz as equações normais.\n\n**Geometria**: $A\\hat{x} = \\text{proj}_{\\text{Im}(A)} b$ — a projeção de $b$ no espaço-coluna de $A$.",
+      "tags": [
+        "#TEOREMA",
+        "#FUNDAMENTAL",
+        "#MEMORIZAR"
+      ],
+      "x": 100,
+      "y": 2364,
+      "w": 300,
+      "h": 159.578125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804537627jqhr"
+    },
+    {
+      "id": "n1771821098177b790",
+      "type": "N",
+      "title": "Aplicação: Regressão Linear",
+      "body": "Regressão linear é o caso particular de mínimos quadrados onde:\n- $A$ = matriz de features (design matrix)\n- $b$ = vetor de observações\n- $\\hat{x}$ = coeficientes do modelo\n\n$\\hat{y} = A\\hat{x}$ = predições do modelo linear.",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1792,
+      "w": 280,
+      "h": 191.3125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804537627jqhr"
+    },
+    {
+      "id": "n1771821098215vtkm",
+      "type": "N",
+      "title": "Rubão — Decomposição LU",
+      "body": "🔥 **Rubão**: \"**LU** = fazer **Gauss** uma vez e guardar o trabalho. **Cada** novo $b$ é barato.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 140,
+      "w": 280,
+      "h": 111.578125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n17718210982178x54",
+      "type": "N",
+      "title": "Rubão — Decomposição de Cholesky",
+      "body": "🔥 **Rubão**: \"Cholesky = a **LU** especial pra matrizes positivas definidas. **Metade** do custo, **sempre** funciona pra quem merece.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 308,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771821098219uqnb",
+      "type": "N",
+      "title": "Rubão — Decomposição QR",
+      "body": "**🔥 Rubão: \"QR = Gram-Schmidt empacotado numa fatoração. A parte ortogonal Q + a parte triangular R.\"**",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 492,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771821098221wus4",
+      "type": "N",
+      "title": "Rubão — Traço & Propriedades Globais",
+      "body": "🔥 **Rubão**: \"Traço e determinante são as duas fofocas que a matriz não consegue esconder, não importa a base.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 2784,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804539639pwr9"
+    },
+    {
+      "id": "n1771821098271209d",
+      "type": "N",
+      "title": "← Ref: Processo de Gram-Schmidt",
+      "body": "Conceito definido em **AL**-4 — **Geometria** (**PI**, **Ortogonalidade**).\n**Ver**: **Processo** de Gram-Schmidt",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 676,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771821098273somg",
+      "type": "N",
+      "title": "← Ref: Classificação por Autovalores",
+      "body": "Conceito definido em **AL**-5 — **Espectro** (**Autovalores**, **Diag**.).\n**Ver**: **Classificação** por Autovalores",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 860,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n177182109827553sy",
+      "type": "N",
+      "title": "← Ref: Teorema de Rouché-Capelli",
+      "body": "Conceito definido em **AL**-3 — **Análise** (**Determinante**, **Sistemas**).\n**Ver**: **Teorema** de Rouché-Capelli",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 1044,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n1771821098277w5q7",
+      "type": "N",
+      "title": "← Ref: Projeção Ortogonal",
+      "body": "Conceito definido em **AL**-4 — **Geometria** (**PI**, **Ortogonalidade**).\n**Ver**: **Projeção** Ortogonal",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 2048,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804537627jqhr"
+    },
+    {
+      "id": "n1771821098279om9v",
+      "type": "N",
+      "title": "← Ref: Autovalores e Autovetores",
+      "body": "Conceito definido em **AL**-5 — **Espectro** (**Autovalores**, **Diag**.).\n**Ver**: **Autovalores** e Autovetores",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 2968,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804539639pwr9"
+    },
+    {
+      "id": "n1771821098281m5zu",
+      "type": "N",
+      "title": "← Ref: Autovalores e Autovetores",
+      "body": "Conceito definido em **AL**-5 — **Espectro** (**Autovalores**, **Diag**.).\n**Ver**: **Autovalores** e Autovetores",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 1228,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    },
+    {
+      "id": "n17718210982834opi",
+      "type": "N",
+      "title": "← Ref: Sistema Linear Ax = b",
+      "body": "Conceito definido em **AL**-3 — **Análise** (**Determinante**, **Sistemas**).\n**Ver**: **Sistema Linear Ax** = b",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 2232,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804537627jqhr"
+    },
+    {
+      "id": "n1771821098293dw2z",
+      "type": "N",
+      "title": "← Ref: Teorema Espectral (Matrizes Simétricas)",
+      "body": "Conceito definido em **AL**-5 — **Espectro** (**Autovalores**, **Diag**.).\n**Ver**: **Teorema Espectral** (**Matrizes Simétricas**)",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 1412,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453656347zr"
+    }
+  ],
+  "conns": [
+    {
+      "id": "c1771821098272j1r4",
+      "type": "produces",
+      "sourceId": "n1771821098271209d",
+      "targetId": "n1771804927494g846",
+      "label": "Gram-Schmidt → QR"
+    },
+    {
+      "id": "c1771821098274bhet",
+      "type": "produces",
+      "sourceId": "n1771821098273somg",
+      "targetId": "n1771804939413u7xr",
+      "label": "pos.def. → Cholesky"
+    },
+    {
+      "id": "c1771821098276rp5o",
+      "type": "produces",
+      "sourceId": "n177182109827553sy",
+      "targetId": "n17718049224141nh8",
+      "label": "Gauss → fatoração LU"
+    },
+    {
+      "id": "c1771821098278bgz4",
+      "type": "produces",
+      "sourceId": "n1771821098277w5q7",
+      "targetId": "n1771821098175uvub",
+      "label": "projeção → mín. quadrados"
+    },
+    {
+      "id": "c1771805047738b93g",
+      "type": "produces",
+      "sourceId": "n17718210981721i00",
+      "targetId": "n1771804954301s9v0",
+      "label": "SVD → pseudo-inversa"
+    },
+    {
+      "id": "c17718050495110g56",
+      "type": "produces",
+      "sourceId": "n1771804954301s9v0",
+      "targetId": "n1771821098175uvub",
+      "label": "x̂ = A⁺b"
+    },
+    {
+      "id": "c1771821098280w8zu",
+      "type": "produces",
+      "sourceId": "n1771821098279om9v",
+      "targetId": "n17718049600469dbt",
+      "label": "tr(A)=Σλᵢ, det(A)=Πλᵢ"
+    },
+    {
+      "id": "c1771821098282idnn",
+      "type": "produces",
+      "sourceId": "n1771821098281m5zu",
+      "targetId": "n1771821098170dxuv",
+      "label": "σᵢ = √λᵢ(AᵀA)"
+    },
+    {
+      "id": "c1771821098284frhh",
+      "type": "produces",
+      "sourceId": "n17718210982834opi",
+      "targetId": "n1771821098175uvub",
+      "label": "sem sol. exata → mín.quad."
+    },
+    {
+      "id": "c1771821098173xk7t",
+      "type": "produces",
+      "sourceId": "n1771821098170dxuv",
+      "targetId": "n1771821098171ut3u",
+      "label": ""
+    },
+    {
+      "id": "c1771821098174ott2",
+      "type": "produces",
+      "sourceId": "n1771821098171ut3u",
+      "targetId": "n17718210981721i00",
+      "label": ""
+    },
+    {
+      "id": "c17718210981783gax",
+      "type": "produces",
+      "sourceId": "n1771821098175uvub",
+      "targetId": "n1771821098176bzy7",
+      "label": ""
+    },
+    {
+      "id": "c17718210981792eno",
+      "type": "produces",
+      "sourceId": "n1771821098176bzy7",
+      "targetId": "n1771821098177b790",
+      "label": ""
+    },
+    {
+      "id": "c17718210982169qgl",
+      "type": "depends",
+      "sourceId": "n1771821098215vtkm",
+      "targetId": "n17718049224141nh8",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098218v6j4",
+      "type": "depends",
+      "sourceId": "n17718210982178x54",
+      "targetId": "n1771804939413u7xr",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098220ujdd",
+      "type": "depends",
+      "sourceId": "n1771821098219uqnb",
+      "targetId": "n1771804927494g846",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098222j1ar",
+      "type": "depends",
+      "sourceId": "n1771821098221wus4",
+      "targetId": "n17718049600469dbt",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098241du4o",
+      "type": "depends",
+      "sourceId": "n1771804954301s9v0",
+      "targetId": "n1771821098170dxuv",
+      "label": "usa SVD"
+    },
+    {
+      "id": "c1771821098294xck1",
+      "type": "produces",
+      "sourceId": "n1771821098293dw2z",
+      "targetId": "n1771821098171ut3u",
+      "label": "SVD generaliza espectral"
+    },
+    {
+      "id": "c1771821098262lvwy",
+      "type": "produces",
+      "sourceId": "n1771804927494g846",
+      "targetId": "n1771821098176bzy7",
+      "label": "QR resolve MQ"
+    },
+    {
+      "id": "c1771821098264lr44",
+      "type": "generalizes",
+      "sourceId": "n1771804939413u7xr",
+      "targetId": "n17718049224141nh8",
+      "label": "Cholesky é LU para pos.def."
+    }
+  ],
+  "frames": [
+    {
+      "id": "n177180453656347zr",
+      "title": "§13 — Decomposições Matriciais",
+      "x": -280,
+      "y": 80,
+      "width": 1770,
+      "height": 1572
+    },
+    {
+      "id": "n1771804537627jqhr",
+      "title": "§14 — Mínimos Quadrados",
+      "x": -280,
+      "y": 1732,
+      "width": 720,
+      "height": 912
+    },
+    {
+      "id": "n1771804539639pwr9",
+      "title": "§15 — Traço & Propriedades Globais",
+      "x": -280,
+      "y": 2724,
+      "width": 720,
+      "height": 508
+    }
+  ],
+  "viewport": {
+    "x": -690.7328923510086,
+    "y": -2706.1676047207575,
+    "z": 2.0274267687487875
+  }
+}

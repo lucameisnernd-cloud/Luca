@@ -1,0 +1,400 @@
+{
+  "version": 2,
+  "id": "al-canvas-1",
+  "name": "AL-1 — Fundação (EV, Base, Dimensão)",
+  "created": "2026-02-23T04:31:38.151Z",
+  "modified": "2026-02-23T04:31:38.151Z",
+  "nodes": [
+    {
+      "id": "n1771804665589wobj",
+      "type": "N",
+      "title": "§0 Motivação — Rubão",
+      "body": "Álgebra **Linear** nasceu de um problema prático: resolver sistemas de equações. **Mas** virou a linguagem universal da matemática aplicada.\n\n🔥 **Rubão**: \"Tudo que é linear, a gente resolve. **Tudo** que não é, a gente lineariza e resolve assim mesmo.\"\n\n**Três** pilares:\n1. **Espaço** vetorial — onde moram os objetos\n2. **Transformação** linear — o que fazemos com eles\n3. **Matriz** — a planilha que representa a transformação",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 140,
+      "w": 280,
+      "h": 320,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804511284qbis"
+    },
+    {
+      "id": "n177180466872906ak",
+      "type": "H",
+      "title": "§0 Axioma Central",
+      "body": "**Hipótese Fundamental**: **Todo** fenômeno modelável por equações lineares pode ser completamente analisado pelas ferramentas da **Álgebra Linear**.\n\nA linearidade ($f(ax+by) = af(x)+bf(y)$) é a propriedade que torna tudo tratável: superposição, decomposição, inversão.",
+      "tags": [],
+      "x": 100,
+      "y": 140,
+      "w": 300,
+      "h": 188,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804511284qbis"
+    },
+    {
+      "id": "n1771804671810ovmw",
+      "type": "N",
+      "title": "§0 Mapa da Jornada",
+      "body": "Sequência lógica do tratado:\n\n$\\text{Sistema} \\to \\text{Espaço} \\to \\text{Transformação} \\to \\text{Matriz} \\to \\text{Determinante}$\n$\\to \\text{Autovalor} \\to \\text{Diagonalização} \\to \\text{SVD}$\n\n**Cada** seção constrói sobre a anterior. **Não** existe atalho.",
+      "tags": [],
+      "x": -240,
+      "y": 500,
+      "w": 280,
+      "h": 212,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804511284qbis"
+    },
+    {
+      "id": "n1771804679089jjiq",
+      "type": "D",
+      "title": "Espaço Vetorial (V, K, +, ·)",
+      "body": "**Definição**. **Um** *espaço vetorial* sobre um corpo $K$ é um conjunto $V$ munido de:\n- **Soma**: $+: V \\times V \\to V$\n- **Produto** por escalar: $\\cdot: K \\times V \\to V$\n\nsatisfazendo 8 axiomas:\n1. **Associatividade** da soma\n2. **Comutatividade** da soma\n3. **Elemento** neutro $\\vec{0}$\n4. **Inverso** aditivo $-v$\n5. **Associatividade** escalar: $a(bv) = (ab)v$\n6. **Distributiva** vetorial: $a(u+v) = au + av$\n7. **Distributiva** escalar: $(a+b)v = av + bv$\n8. **Elemento** neutro escalar: $1 \\cdot v = v$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 932,
+      "w": 300,
+      "h": 392,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771804687528ty94",
+      "type": "D",
+      "title": "Subespaço Vetorial",
+      "body": "**Definição**. $W \\subseteq V$ é *subespaço* de $V$ se:\n1. $\\vec{0} \\in W$\n2. $u, v \\in W \\Rightarrow u + v \\in W$ (fechado para soma)\n3. $\\alpha \\in K, v \\in W \\Rightarrow \\alpha v \\in W$ (fechado para escalar)\n\n**Teste** rápido (2 em 1): $W \\neq \\emptyset$ e $\\alpha u + \\beta v \\in W$ para todos $\\alpha, \\beta \\in K$, $u, v \\in W$.",
+      "tags": [],
+      "x": 450,
+      "y": 932,
+      "w": 300,
+      "h": 236,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771804683440gjog",
+      "type": "N",
+      "title": "§1 Rubão — Espaço Vetorial",
+      "body": "🔥 **Rubão**: \"Espaço vetorial é um playground com regras. **Você** pode **somar** coisas e esticar coisas. **Se** as 8 regras valem, é espaço vetorial — pode ser vetor, matriz, função, polinômio, o que for.\"\n\n**Exemplos** clássicos:\n- $\\mathbb{R}^n$ — o padrão\n- $M_{m \\times n}$ — matrizes\n- $P_n(x)$ — polinômios de grau ≤ n\n- $C[a,b]$ — funções contínuas",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 932,
+      "w": 280,
+      "h": 264,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771804691501vooe",
+      "type": "D",
+      "title": "Combinação Linear, Geração, Independência",
+      "body": "Combinação linear: $v = \\alpha_1 v_1 + \\alpha_2 v_2 + \\cdots + \\alpha_n v_n$\n\n**Espaço** gerado: $\\text{span}(S) = \\{$todas as combinações lineares de $S\\}$\n\n**Independência** linear: $\\{v_1, \\ldots, v_n\\}$ é **LI** se:\n$$\\alpha_1 v_1 + \\cdots + \\alpha_n v_n = \\vec{0} \\implies \\alpha_1 = \\cdots = \\alpha_n = 0$$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 800,
+      "y": 932,
+      "w": 300,
+      "h": 256,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771804696439w9zf",
+      "type": "D",
+      "title": "Base e Dimensão",
+      "body": "Base: conjunto $\\beta = \\{v_1, \\ldots, v_n\\}$ que é:\n1. **LI** (independente)\n2. **Gerador** (gera todo $V$)\n\n**Dimensão**: $\\dim(V) = |\\beta|$ = número de vetores em qualquer base.\n\nTeoremas-chave:\n- **Todas** as bases de $V$ têm o mesmo tamanho\n- $\\dim(\\mathbb{R}^n) = n$\n- $\\dim(P_n) = n+1$\n- $\\dim(M_{m \\times n}) = mn$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 1150,
+      "y": 932,
+      "w": 300,
+      "h": 304,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n17718046994881um3",
+      "type": "R",
+      "title": "Teorema da Dimensão (Soma de Subespaços)",
+      "body": "**Teorema**. **Se** $W_1, W_2$ são subespaços de $V$:\n\n$$\\dim(W_1 + W_2) = \\dim(W_1) + \\dim(W_2) - \\dim(W_1 \\cap W_2)$$\n\n**Soma direta:** $W_1 \\oplus W_2$ quando $W_1 \\cap W_2 = \\{\\vec{0}\\}$, e então:\n$$\\dim(W_1 \\oplus W_2) = \\dim(W_1) + \\dim(W_2)$$",
+      "tags": [],
+      "x": 100,
+      "y": 1364,
+      "w": 300,
+      "h": 212,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771804896928q9bk",
+      "type": "D",
+      "title": "Espaços Vetoriais Abstratos",
+      "body": "Além de $\\mathbb{R}^n$: qualquer conjunto com soma + escalar + 8 axiomas é **EV**.\n\n**Exemplos** importantes:\n\n| **Espaço** | **Elementos** | **Dimensão** |\n|--------|----------|----------|\n| $P_n(\\mathbb{R})$ | **Polinômios** grau ≤ $n$ | $n+1$ |\n| $M_{m \\times n}$ | **Matrizes** $m \\times n$ | $mn$ |\n| $C[a,b]$ | **Funções** contínuas | $\\infty$ |\n| $\\ell^2$ | **Sequências** somáveis | $\\infty$ |\n\n**Base** de $P_3$: $\\{1, x, x^2, x^3\\}$, $\\dim = 4$\n\n**Derivação** $D: P_n \\to P_{n-1}$ é transformação linear!\n$D(ax^2 + bx + c) = 2ax + b$",
+      "tags": [],
+      "x": 100,
+      "y": 1796,
+      "w": 300,
+      "h": 388,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n177180453258368z7"
+    },
+    {
+      "id": "n177182109814531jp",
+      "type": "H",
+      "title": "Problema Central: Dominar Álgebra Linear",
+      "body": "**Objetivo**: Construir domínio completo de **Álgebra Linear**, de sistemas lineares ($Ax=b$) até decomposições matriciais (**SVD**, **QR**), como fundamento para aplicações quantitativas em **finanças**, **ML** e **engenharia**.\n\n**Pergunta-motor**: Como resolver, decompor e otimizar sistemas lineares de qualquer tamanho?",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": -70,
+      "y": -192,
+      "w": 300,
+      "h": 232,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": null
+    },
+    {
+      "id": "n1771821098183xsix",
+      "type": "N",
+      "title": "Rubão — Combinação Linear, Geração, Independência",
+      "body": "🔥 **Rubão**: \"**LI** = ninguém é redundante. **Cada** vetor traz informação nova.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1236,
+      "w": 280,
+      "h": 128,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771821098185zxx3",
+      "type": "N",
+      "title": "Rubão — Base e Dimensão",
+      "body": "🔥 **Rubão**: \"Base é o kit mínimo e suficiente. **Sem** sobra, sem falta.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1404,
+      "w": 280,
+      "h": 128,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771821098213pzh7",
+      "type": "N",
+      "title": "Rubão — Espaços Vetoriais Abstratos",
+      "body": "🔥 **Rubão**: \"A beleza é que as **MESMAS** ferramentas funcionam pra tudo. **Autovalor** de matriz, autovalor de operador diferencial — mesma teoria.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1796,
+      "w": 280,
+      "h": 160,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453258368z7"
+    },
+    {
+      "id": "n1771821098223ajtx",
+      "type": "D",
+      "title": "Corpo K",
+      "body": "**Definição**. Um *corpo* (field) $K$ é um conjunto munido de $+$ e $\\cdot$ onde:\n- $(K, +)$ é grupo abeliano com neutro $0$\n- $(K \\setminus \\{0\\}, \\cdot)$ é grupo abeliano com neutro $1$\n- Distributividade vale\n\n**Exemplos**: $\\mathbb{Q}, \\mathbb{R}, \\mathbb{C}, \\mathbb{F}_p$. **Não** são corpos: $\\mathbb{Z}, \\mathbb{N}$.",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": 1500,
+      "y": 932,
+      "w": 300,
+      "h": 248,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771821098227t8w4",
+      "type": "D",
+      "title": "Soma Direta ⊕",
+      "body": "**Definição**. $V = W_1 \\oplus W_2$ (soma direta) se:\n1. $V = W_1 + W_2$ (todo $v \\in V$ se escreve como $w_1 + w_2$)\n2. $W_1 \\cap W_2 = \\{\\vec{0}\\}$ (decomposição é única)\n\n**Equivalente**: $\\dim(V) = \\dim(W_1) + \\dim(W_2)$ e $W_1 \\cap W_2 = \\{\\vec{0}\\}$.",
+      "tags": [],
+      "x": 1850,
+      "y": 932,
+      "w": 300,
+      "h": 204,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804513013unrv"
+    },
+    {
+      "id": "n1771821098287vjaw",
+      "type": "N",
+      "title": "← Ref: Isomorfismo",
+      "body": "Conceito definido em **AL-2 — Ação (TL, Matrizes)**.\nVer: **Isomorfismo**",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 1996,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n177180453258368z7"
+    }
+  ],
+  "conns": [
+    {
+      "id": "c1771804989848gj7g",
+      "type": "produces",
+      "sourceId": "n1771804679089jjiq",
+      "targetId": "n1771804687528ty94",
+      "label": "contém"
+    },
+    {
+      "id": "c1771804991230gy8c",
+      "type": "produces",
+      "sourceId": "n1771804687528ty94",
+      "targetId": "n1771804691501vooe",
+      "label": "gera conceitos de"
+    },
+    {
+      "id": "c1771804992971x1xm",
+      "type": "produces",
+      "sourceId": "n1771804691501vooe",
+      "targetId": "n1771804696439w9zf",
+      "label": "LI + gerador = base"
+    },
+    {
+      "id": "c1771821098184jgxb",
+      "type": "depends",
+      "sourceId": "n1771821098183xsix",
+      "targetId": "n1771804691501vooe",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098186foac",
+      "type": "depends",
+      "sourceId": "n1771821098185zxx3",
+      "targetId": "n1771804696439w9zf",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098214rzy9",
+      "type": "depends",
+      "sourceId": "n1771821098213pzh7",
+      "targetId": "n1771804896928q9bk",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098244pi9w",
+      "type": "produces",
+      "sourceId": "n177180466872906ak",
+      "targetId": "n1771804679089jjiq",
+      "label": "motiva fundação"
+    },
+    {
+      "id": "c17718210982457z1m",
+      "type": "produces",
+      "sourceId": "n177182109814531jp",
+      "targetId": "n177180466872906ak",
+      "label": "declara hipótese"
+    },
+    {
+      "id": "c1771821098246fg6z",
+      "type": "depends",
+      "sourceId": "n1771804671810ovmw",
+      "targetId": "n177180466872906ak",
+      "label": "roadmap do tratado"
+    },
+    {
+      "id": "c1771821098247jm0x",
+      "type": "depends",
+      "sourceId": "n1771804683440gjog",
+      "targetId": "n1771804679089jjiq",
+      "label": "contextualiza EV"
+    },
+    {
+      "id": "c17718210982514aba",
+      "type": "produces",
+      "sourceId": "n1771804696439w9zf",
+      "targetId": "n17718046994881um3",
+      "label": "fundamenta o teorema"
+    },
+    {
+      "id": "c1771821098288mee4",
+      "type": "produces",
+      "sourceId": "n1771821098287vjaw",
+      "targetId": "n1771804896928q9bk",
+      "label": "EVs isomorfos"
+    },
+    {
+      "id": "c1771821098253g206",
+      "type": "depends",
+      "sourceId": "n1771821098223ajtx",
+      "targetId": "n1771804679089jjiq",
+      "label": "EV definido sobre corpo"
+    },
+    {
+      "id": "c177182109825593rm",
+      "type": "depends",
+      "sourceId": "n1771821098227t8w4",
+      "targetId": "n17718046994881um3",
+      "label": "dim(W1⊕W2)"
+    }
+  ],
+  "frames": [
+    {
+      "id": "n1771804511284qbis",
+      "title": "§0 — Por Que a Álgebra Linear Existe",
+      "x": -280,
+      "y": 80,
+      "width": 720,
+      "height": 712
+    },
+    {
+      "id": "n1771804513013unrv",
+      "title": "§1 — Espaços Vetoriais",
+      "x": -280,
+      "y": 872,
+      "width": 2470,
+      "height": 784
+    },
+    {
+      "id": "n177180453258368z7",
+      "title": "§11 — Espaços Vetoriais Abstratos",
+      "x": -280,
+      "y": 1736,
+      "width": 720,
+      "height": 528
+    }
+  ],
+  "viewport": {
+    "x": -330,
+    "y": -242,
+    "z": 0.3257328990228013
+  }
+}

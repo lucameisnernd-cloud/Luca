@@ -1,0 +1,530 @@
+{
+  "version": 2,
+  "id": "al-canvas-3",
+  "name": "AL-3 — Análise (Determinante, Sistemas)",
+  "created": "2026-02-23T04:31:38.152Z",
+  "modified": "2026-02-23T04:56:36.380Z",
+  "nodes": [
+    {
+      "id": "n1771804767387kf32",
+      "type": "D",
+      "title": "Determinante — Definição Axiomática",
+      "body": "**Definição**. O determinante $\\det: M_{n \\times n} \\to K$ é a única função que satisfaz:\n\n1. **Multilinear** nas linhas (linear em cada linha separadamente)\n2. **Alternada** (trocar duas linhas inverte o sinal)\n3. **Normalizada**: $\\det(I) = 1$\n\n**Fórmula** de **Leibniz**:\n$$\\det(A) = \\sum_{\\sigma \\in S_n} \\text{sgn}(\\sigma) \\prod_{i=1}^n a_{i,\\sigma(i)}$$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 140,
+      "w": 300,
+      "h": 239.140625,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771804779879vq2n",
+      "type": "C",
+      "title": "Cálculo: det 3×3 (Sarrus)",
+      "body": "$$A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 0 \\end{pmatrix}$$\n\n**Sarrus (só 3×3!):**\n$= 1 \\cdot 5 \\cdot 0 + 2 \\cdot 6 \\cdot 7 + 3 \\cdot 4 \\cdot 8$\n$- 3 \\cdot 5 \\cdot 7 - 2 \\cdot 4 \\cdot 0 - 1 \\cdot 6 \\cdot 8$\n$= 0 + 84 + 96 - 105 - 0 - 48 = 27$\n\n$\\det(A) = 27 \\neq 0 \\Rightarrow A$ é invertível ✅",
+      "tags": [
+        "#CALC"
+      ],
+      "x": 100,
+      "y": 648,
+      "w": 300,
+      "h": 230.90625,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n17718047710114z0n",
+      "type": "R",
+      "title": "Propriedades do Determinante",
+      "body": "Propriedades-chave:\n\n$$\\det(AB) = \\det(A) \\cdot \\det(B)$$\n$$\\det(A^T) = \\det(A)$$\n$$\\det(A^{-1}) = \\frac{1}{\\det(A)}$$\n$$\\det(\\alpha A) = \\alpha^n \\det(A) \\quad (A \\in M_{n \\times n})$$\n\n**Critério de invertibilidade:**\n$$A \\text{ invertível} \\iff \\det(A) \\neq 0$$\n\n**Interpretação geométrica:**\n$|\\det(A)|$ = fator de escala de volume sob a transformação $A$",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 100,
+      "y": 960,
+      "w": 300,
+      "h": 288.25,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n17718047872484smx",
+      "type": "D",
+      "title": "Sistema Linear Ax = b",
+      "body": "Sistema de $m$ equações e $n$ incógnitas:\n\n$$\\begin{cases} a_{11}x_1 + a_{12}x_2 + \\cdots + a_{1n}x_n = b_1 \\\\ a_{21}x_1 + a_{22}x_2 + \\cdots + a_{2n}x_n = b_2 \\\\ \\vdots \\\\ a_{m1}x_1 + a_{m2}x_2 + \\cdots + a_{mn}x_n = b_m \\end{cases}$$\n\n**Forma matricial:** $Ax = b$\n\n**Classificação**:\n- **SPI** (possível determinado): solução única\n- **SPI** (possível indeterminado): ∞ soluções\n- **SI** (impossível): nenhuma solução",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 1492,
+      "w": 300,
+      "h": 291.96875,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n17718047983224e7c",
+      "type": "R",
+      "title": "Estrutura das Soluções",
+      "body": "Sistema homogêneo $Ax = 0$:\n- **SEMPRE** tem solução ($x = \\vec{0}$)\n- **Conjunto** solução = $\\ker(A)$ = subespaço\n- **Se** $n > m$ (mais incógnitas que equações): tem soluções não-triviais\n\n**Sistema** não-homogêneo $Ax = b$:\n- **Se** $x_p$ é solução particular:\n$$\\text{Sol}(Ax=b) = x_p + \\ker(A)$$",
+      "tags": [],
+      "x": 100,
+      "y": 1844,
+      "w": 300,
+      "h": 223.203125,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n1771821098146wqqb",
+      "type": "D",
+      "title": "Cofator Cᵢⱼ",
+      "body": "**Definição**. O *cofator* da entrada $a_{ij}$ é:\n$$C_{ij} = (-1)^{i+j} M_{ij}$$\nonde $M_{ij}$ é o **menor** (determinante da submatriz obtida removendo linha $i$ e coluna $j$).",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 450,
+      "y": 140,
+      "w": 300,
+      "h": 143.46875,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098147ajz2",
+      "type": "Q",
+      "title": "Expansão por Cofatores",
+      "body": "Fórmula (expansão pela linha $i$):\n$$\\det(A) = \\sum_{j=1}^{n} a_{ij} C_{ij}$$\n\n**Expansão** pela coluna $j$:\n$$\\det(A) = \\sum_{i=1}^{n} a_{ij} C_{ij}$$",
+      "tags": [],
+      "x": 100,
+      "y": 468,
+      "w": 300,
+      "h": 159.765625,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n17718210981482x6b",
+      "type": "D",
+      "title": "Matriz Adjugada adj(A)",
+      "body": "**Definição**. A *matriz adjugada* (ou adjunta clássica) é a transposta da matriz de cofatores:\n$$\\text{adj}(A) = [C_{ij}]^T$$",
+      "tags": [],
+      "x": 800,
+      "y": 140,
+      "w": 300,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098149m808",
+      "type": "Q",
+      "title": "Inversa via Adjugada",
+      "body": "Fórmula:\n$$A^{-1} = \\frac{1}{\\det(A)} \\text{adj}(A)$$\n\n**Condição**: $\\det(A) \\neq 0$.",
+      "tags": [],
+      "x": 450,
+      "y": 468,
+      "w": 300,
+      "h": 144.75,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098150v7vi",
+      "type": "R",
+      "title": "Regra de Cramer",
+      "body": "**Teorema** (**Cramer**). **Para** $Ax = b$ com $\\det(A) \\neq 0$:\n$$x_i = \\frac{\\det(A_i)}{\\det(A)}$$\nonde $A_i$ é $A$ com coluna $i$ substituída por $b$.\n\n**Limitação**: custo $O(n \\cdot n!)$ — impraticável para $n > 4$.",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 450,
+      "y": 960,
+      "w": 300,
+      "h": 160.6875,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098155l88y",
+      "type": "D",
+      "title": "Forma Escalonada (Row Echelon)",
+      "body": "**Definição**. **Uma** matriz está em *forma escalonada* se:\n1. **Linhas** nulas estão na parte inferior\n2. O primeiro elemento não-nulo de cada linha (pivô) está à direita do pivô da linha acima\n**3. Se *forma escalonada reduzida*: pivôs = 1 e únicos não-nulos em sua coluna**",
+      "tags": [],
+      "x": 450,
+      "y": 1492,
+      "w": 300,
+      "h": 191.3125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n1771821098156il7s",
+      "type": "R",
+      "title": "Eliminação de Gauss",
+      "body": "Método. **Usando** 3 operações elementares:\n1. **Trocar** duas linhas: $L_i \\leftrightarrow L_j$\n2. **Multiplicar** linha por escalar: $L_i \\to \\alpha L_i$ ($\\alpha \\neq 0$)\n3. **Somar** múltiplo: $L_i \\to L_i + \\alpha L_j$\n\n**Reduz** $[A|b]$ à forma escalonada.",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 450,
+      "y": 1844,
+      "w": 300,
+      "h": 175.359375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n1771821098157mcw2",
+      "type": "R",
+      "title": "Teorema de Rouché-Capelli",
+      "body": "**Teorema**. O sistema $Ax = b$ tem solução $\\iff$ $\\text{rank}(A) = \\text{rank}([A|b])$.\n\n**Classificação**:\n- $\\text{rank}(A) = n$ → solução única\n- $\\text{rank}(A) < n$ → $\\infty$ soluções ($n - \\text{rank}(A)$ graus de liberdade)\n- $\\text{rank}(A) < \\text{rank}([A|b])$ → impossível",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 800,
+      "y": 1844,
+      "w": 300,
+      "h": 207.25,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n1771821098191pij8",
+      "type": "N",
+      "title": "Rubão — Determinante — Definição Axiomática",
+      "body": "🔥 **Rubão**: \"Determinante = volume orientado do paralelepípedo formado pelas colunas. **Zero** = achatou, virou algo de dimensão menor.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 140,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098193s0t2",
+      "type": "N",
+      "title": "Rubão — Sistema Linear Ax = b",
+      "body": "🔥 **Rubão**: \"Toda a álgebra linear nasceu para resolver $Ax = b$. **Todo** o resto é **consequência**.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1492,
+      "w": 280,
+      "h": 111.578125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n1771821098195th9r",
+      "type": "N",
+      "title": "Rubão — Estrutura das Soluções",
+      "body": "**🔥 Rubão: \"A solução geral = uma solução particular + todas as soluções do homogêneo. Sempre.\" Graus** de liberdade: $n - \\text{rank}(A)$ variáveis livres",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1676,
+      "w": 280,
+      "h": 143.46875,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n1771821098229rzho",
+      "type": "D",
+      "title": "Permutação σ ∈ Sₙ",
+      "body": "**Definição**. **Uma** *permutação* de $\\{1, \\ldots, n\\}$ é bijeção $\\sigma: \\{1,\\ldots,n\\} \\to \\{1,\\ldots,n\\}$.\n\nO conjunto $S_n$ tem $n!$ elementos.\n\n**Sinal**: $\\text{sgn}(\\sigma) = (-1)^{\\text{inversões}}$. **Fórmula** de **Leibniz**:\n$$\\det(A) = \\sum_{\\sigma \\in S_n} \\text{sgn}(\\sigma) \\prod_{i=1}^n a_{i,\\sigma(i)}$$",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": 1150,
+      "y": 140,
+      "w": 300,
+      "h": 191.3125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098230is1h",
+      "type": "E",
+      "title": "Erro: det(A+B) = det(A) + det(B)",
+      "body": "**FALSO**! O determinante **NÃO** é linear em matrizes.\n\n**Contraexemplo**: $A = B = I_2$\n$$\\det(A+B) = \\det(2I) = 4 \\neq 2 = \\det(A) + \\det(B)$$\n\nO determinante É multilinear nas linhas (ou colunas), mas não na matriz como um todo.",
+      "tags": [
+        "#ERRO-COMUM"
+      ],
+      "x": 1500,
+      "y": 140,
+      "w": 280,
+      "h": 207.25,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098236l4lm",
+      "type": "E",
+      "title": "Erro: det(A)=0 implica A=0",
+      "body": "**FALSO**! $\\det(A) = 0$ apenas significa que $A$ é singular (não-invertível, $\\ker(A) \\neq \\{\\vec{0}\\}$).\n\n**Contraexemplo**: **$A = \\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$**\n$\\det(A) = 4-4 = 0$, mas $A \\neq 0$.\n\n**Correto**: **$\\det(A) = 0 \\iff A$ é singular $\\iff \\text{rank}(A) < n$.**",
+      "tags": [
+        "#ERRO-COMUM"
+      ],
+      "x": 1500,
+      "y": 420,
+      "w": 280,
+      "h": 223.203125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098267oerq",
+      "type": "N",
+      "title": "← Ref: Equivalências de Invertibilidade (TFAE)",
+      "body": "Conceito definido em **AL**-2 — **Ação** (**TL**, **Matrizes**).\n**Ver**: **Equivalências** de **Invertibilidade** (**TFAE**)",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 340,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804518146uwpe"
+    },
+    {
+      "id": "n1771821098291m1vd",
+      "type": "N",
+      "title": "← Ref: Teorema do Núcleo-Imagem (Rank-Nullity)",
+      "body": "Conceito definido em **AL**-2 — **Ação** (**TL**, **Matrizes**).\n**Ver**: **Teorema** do Núcleo-Imagem (Rank-Nullity)",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 1900,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804519762mr0i"
+    },
+    {
+      "id": "n1771821098295501t",
+      "type": "N",
+      "title": "← Ref: Decomposição LU",
+      "body": "Conceito definido em **AL**-6 — **Arsenal** (**Decomposições**, **MQ**).\n**Ver**: **Decomposição LU**",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 2100,
+      "w": 280,
+      "h": 127.53125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804519762mr0i"
+    }
+  ],
+  "conns": [
+    {
+      "id": "c1771821098268ly9y",
+      "type": "depends",
+      "sourceId": "n1771821098267oerq",
+      "targetId": "n1771804767387kf32",
+      "label": "det(A)≠0 ⟺ invertível"
+    },
+    {
+      "id": "c1771805007754iq8a",
+      "type": "produces",
+      "sourceId": "n1771804767387kf32",
+      "targetId": "n17718047710114z0n",
+      "label": "propriedades"
+    },
+    {
+      "id": "c1771805009357is0j",
+      "type": "produces",
+      "sourceId": "n1771804767387kf32",
+      "targetId": "n1771821098146wqqb",
+      "label": "cálculo via cofatores"
+    },
+    {
+      "id": "c1771805010732fyah",
+      "type": "produces",
+      "sourceId": "n1771821098150v7vi",
+      "targetId": "n17718047872484smx",
+      "label": "Cramer resolve sistemas"
+    },
+    {
+      "id": "c17718050121515rbh",
+      "type": "produces",
+      "sourceId": "n17718047872484smx",
+      "targetId": "n1771821098155l88y",
+      "label": "resolvido por Gauss"
+    },
+    {
+      "id": "c17718050139921gua",
+      "type": "implies",
+      "sourceId": "n1771821098157mcw2",
+      "targetId": "n17718047983224e7c",
+      "label": "Sol = xₚ + ker(A)"
+    },
+    {
+      "id": "c17718210981516ned",
+      "type": "produces",
+      "sourceId": "n1771821098146wqqb",
+      "targetId": "n1771821098147ajz2",
+      "label": ""
+    },
+    {
+      "id": "c1771821098152fxhy",
+      "type": "produces",
+      "sourceId": "n1771821098147ajz2",
+      "targetId": "n17718210981482x6b",
+      "label": ""
+    },
+    {
+      "id": "c1771821098153arbz",
+      "type": "produces",
+      "sourceId": "n17718210981482x6b",
+      "targetId": "n1771821098149m808",
+      "label": ""
+    },
+    {
+      "id": "c1771821098154xm1u",
+      "type": "produces",
+      "sourceId": "n1771821098149m808",
+      "targetId": "n1771821098150v7vi",
+      "label": ""
+    },
+    {
+      "id": "c1771821098158c00a",
+      "type": "produces",
+      "sourceId": "n1771821098155l88y",
+      "targetId": "n1771821098156il7s",
+      "label": ""
+    },
+    {
+      "id": "c1771821098159qyh1",
+      "type": "produces",
+      "sourceId": "n1771821098156il7s",
+      "targetId": "n1771821098157mcw2",
+      "label": ""
+    },
+    {
+      "id": "c1771821098192boxb",
+      "type": "depends",
+      "sourceId": "n1771821098191pij8",
+      "targetId": "n1771804767387kf32",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098194kiko",
+      "type": "depends",
+      "sourceId": "n1771821098193s0t2",
+      "targetId": "n17718047872484smx",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098196jf0w",
+      "type": "depends",
+      "sourceId": "n1771821098195th9r",
+      "targetId": "n17718047983224e7c",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098231e9t7",
+      "type": "contradicts",
+      "sourceId": "n1771821098230is1h",
+      "targetId": "n17718047710114z0n",
+      "label": "contradiz"
+    },
+    {
+      "id": "c17718210982377mhr",
+      "type": "contradicts",
+      "sourceId": "n1771821098236l4lm",
+      "targetId": "n1771804767387kf32",
+      "label": "contradiz"
+    },
+    {
+      "id": "c1771821098242kd8v",
+      "type": "depends",
+      "sourceId": "n1771821098147ajz2",
+      "targetId": "n1771821098146wqqb",
+      "label": "usa cofatores"
+    },
+    {
+      "id": "c1771821098243ta74",
+      "type": "depends",
+      "sourceId": "n1771821098149m808",
+      "targetId": "n17718210981482x6b",
+      "label": "usa adjugada"
+    },
+    {
+      "id": "c1771821098258e3pp",
+      "type": "depends",
+      "sourceId": "n1771821098229rzho",
+      "targetId": "n1771804767387kf32",
+      "label": "fórmula de Leibniz"
+    },
+    {
+      "id": "c1771821098292ucyi",
+      "type": "implies",
+      "sourceId": "n1771821098291m1vd",
+      "targetId": "n1771821098157mcw2",
+      "label": "rank determina classificação"
+    },
+    {
+      "id": "c1771821098296scpk",
+      "type": "depends",
+      "sourceId": "n1771821098295501t",
+      "targetId": "n1771821098156il7s",
+      "label": "LU fatoriza Gauss"
+    }
+  ],
+  "frames": [
+    {
+      "id": "n1771804518146uwpe",
+      "title": "§4 — Determinante",
+      "x": -280,
+      "y": 80,
+      "width": 2100,
+      "height": 1272
+    },
+    {
+      "id": "n1771804519762mr0i",
+      "title": "§5 — Sistemas Lineares",
+      "x": -280,
+      "y": 1432,
+      "width": 1420,
+      "height": 892
+    }
+  ],
+  "viewport": {
+    "x": -303.01315358525244,
+    "y": -1095.1830446429822,
+    "z": 1.6616603008375388
+  }
+}

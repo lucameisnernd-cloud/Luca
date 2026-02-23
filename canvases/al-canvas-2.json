@@ -1,0 +1,507 @@
+{
+  "version": 2,
+  "id": "al-canvas-2",
+  "name": "AL-2 — Ação (TL, Matrizes)",
+  "created": "2026-02-23T04:31:38.152Z",
+  "modified": "2026-02-23T04:56:12.583Z",
+  "nodes": [
+    {
+      "id": "n1771804712600n3l4",
+      "type": "D",
+      "title": "Transformação Linear",
+      "body": "**Definição**. $T: V \\to W$ é *transformação linear* se para todos $u, v \\in V$, $\\alpha \\in K$:\n\n$$T(u + v) = T(u) + T(v)$$\n$$T(\\alpha v) = \\alpha \\, T(v)$$\n\nEquivalente (teste único):\n$$T(\\alpha u + \\beta v) = \\alpha T(u) + \\beta T(v)$$\n\n**Consequências imediatas:**\n- $T(\\vec{0}) = \\vec{0}$\n- $T(-v) = -T(v)$\n- $T$ é completamente determinada pelos valores na base",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 140,
+      "w": 300,
+      "h": 279.125,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n1771804720834kav1",
+      "type": "D",
+      "title": "Núcleo e Imagem",
+      "body": "Núcleo (**Kernel**):\n$$\\ker(T) = \\{v \\in V : T(v) = \\vec{0}\\}$$\nÉ subespaço de $V$. Mede \"o que T mata\".\n\n**Imagem:**\n$$\\text{Im}(T) = \\{T(v) : v \\in V\\}$$\nÉ subespaço de $W$. Mede \"o que T alcança\".\n\n**Injetividade:** $T$ injetiva $\\iff \\ker(T) = \\{\\vec{0}\\}$\n**Sobrejetividade:** $T$ sobrejetiva $\\iff \\text{Im}(T) = W$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 450,
+      "y": 140,
+      "w": 300,
+      "h": 215.34375,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n1771804717143yntc",
+      "type": "N",
+      "title": "§2 Rubão — Transformação Linear",
+      "body": "🔥 **Rubão**: \"Transformação linear é uma máquina honesta. **Ela** não engana: processar a soma é o mesmo que **somar** os processados. **Esticar** antes ou depois dá na mesma.\"\n\n**Exemplos**:\n- **Rotação** em $\\mathbb{R}^2$: linear ✅\n- **Translação**: **NÃO** linear ❌ (desloca a origem)\n- **Derivação** $D: P_n \\to P_{n-1}$: linear ✅\n- $f(x) = x^2$: **NÃO** linear ❌",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 140,
+      "w": 280,
+      "h": 215.34375,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n1771804725090ec6i",
+      "type": "R",
+      "title": "Teorema do Núcleo-Imagem (Rank-Nullity)",
+      "body": "**Teorema**. **Se** $T: V \\to W$ é linear e $\\dim(V) = n$:\n\n$$\\boxed{\\dim(\\ker T) + \\dim(\\text{Im}\\, T) = \\dim(V)}$$\n\nOu equivalentemente: **nulidade + posto = dimensão do domínio**\n\n$$\\text{nullity}(T) + \\text{rank}(T) = n$$\n\n**",
+      "tags": [
+        "#TEOREMA",
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 800,
+      "w": 300,
+      "h": 201.9375,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n17718047292852qlg",
+      "type": "D",
+      "title": "Isomorfismo",
+      "body": "**Definição**. $T: V \\to W$ é *isomorfismo* se é:\n- **Linear**\n- **Bijetiva** (injetiva + sobrejetiva)\n\n**Equivalente**: $T$ linear, $\\ker(T) = \\{\\vec{0}\\}$ e $\\text{Im}(T) = W$. **Teorema**: $V \\cong W \\iff \\dim(V) = \\dim(W)$",
+      "tags": [],
+      "x": 800,
+      "y": 140,
+      "w": 300,
+      "h": 151.5625,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n177180473334269dl",
+      "type": "Q",
+      "title": "Matriz de uma Transformação Linear",
+      "body": "Dada $T: V \\to W$, bases $\\beta = \\{v_1,\\ldots,v_n\\}$ de $V$ e $\\gamma$ de $W$:\n\n$$[T]_\\beta^\\gamma = \\begin{pmatrix} | & | & & | \\\\ [T(v_1)]_\\gamma & [T(v_2)]_\\gamma & \\cdots & [T(v_n)]_\\gamma \\\\ | & | & & | \\end{pmatrix}$$\n\nCada coluna = coordenadas da imagem do vetor da base.\n\n**Princípio:** $[T(v)]_\\gamma = [T]_\\beta^\\gamma \\cdot [v]_\\beta$",
+      "tags": [],
+      "x": 100,
+      "y": 508,
+      "w": 300,
+      "h": 223.40625,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n1771804741370jslb",
+      "type": "D",
+      "title": "Operações Matriciais Fundamentais",
+      "body": "**Soma**: **$(A+B)_{ij} = a_{ij} + b_{ij}$ (entrada a entrada) Produto por escalar: $(\\alpha A)_{ij} = \\alpha \\cdot a_{ij}$ Produto matricial: $(AB)_{ij} = \\sum_{k=1}^n a_{ik} b_{kj}$**\n- **Linha** de $A$ · **Coluna** de $B$\n- **NÃO** comutativo: $AB \\neq BA$ em geral\n- **Associativo**: $A(BC) = (AB)C$\n\n**Transposta**: **$(A^T)_{ij} = a_{ji}$**\n- $(AB)^T = B^T A^T$ (inverte a ordem!)",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 1276,
+      "w": 300,
+      "h": 215.34375,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771804753248939j",
+      "type": "C",
+      "title": "Exemplo: Produto AB ≠ BA",
+      "body": "$$A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$$\n\n$$AB = \\begin{pmatrix} 2 & 1 \\\\ 1 & 0 \\end{pmatrix}, \\quad BA = \\begin{pmatrix} 0 & 1 \\\\ 1 & 2 \\end{pmatrix}$$\n\n$AB \\neq BA$ — o produto matricial não é comutativo!",
+      "tags": [
+        "#CALC"
+      ],
+      "x": 100,
+      "y": 1580,
+      "w": 300,
+      "h": 156.53125,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771804889135wlsn",
+      "type": "D",
+      "title": "Mudança de Base & Semelhança",
+      "body": "Matriz de mudança de base: **Se** $\\beta$ e $\\beta'$ são bases de $V$:\n$$[v]_{\\beta'} = P_{\\beta \\to \\beta'} \\cdot [v]_\\beta$$\n\nColunas de $P$ = coordenadas dos vetores de $\\beta$ escritos na base $\\beta'$.\n\n**Semelhança:** $A$ e $B$ são semelhantes se $B = P^{-1}AP$ para alguma $P$ invertível.\n\n**Invariantes sob semelhança:**\n- $\\det(A) = \\det(B)$\n- $\\text{tr}(A) = \\text{tr}(B)$\n- **Autovalores** iguais\n- **Posto** igual\n- **Polinômio** característico igual",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 2320,
+      "w": 300,
+      "h": 311.015625,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804530757mhj8"
+    },
+    {
+      "id": "n1771821098160tvwc",
+      "type": "D",
+      "title": "Matriz Simétrica",
+      "body": "**Definição**. $A$ é *simétrica* se $A = A^T$.\n\n**Propriedades**:\n- **Autovalores** são reais\n- **Autovetores** de autovalores distintos são ortogonais\n- **Diagonalizável** por matriz ortogonal ($A = Q\\Lambda Q^T$)",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 450,
+      "y": 1276,
+      "w": 300,
+      "h": 167.515625,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771821098161j2qq",
+      "type": "D",
+      "title": "Matriz Ortogonal",
+      "body": "**Definição**. $Q$ é *ortogonal* se $Q^T Q = Q Q^T = I$, ou seja, $Q^{-1} = Q^T$.\n\n**Propriedades**:\n- **Colunas** formam base ortonormal\n- **Preserva** norma: $\\|Qx\\| = \\|x\\|$\n- $\\det(Q) = \\pm 1$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 800,
+      "y": 1276,
+      "w": 300,
+      "h": 167.515625,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n17718210981622gt3",
+      "type": "D",
+      "title": "Matriz Diagonal & Triangular",
+      "body": "Diagonal: $D_{ij} = 0$ para $i \\neq j$. **Autovalores** = entradas diagonais.\n\n**Triangular** superior $U$: $U_{ij} = 0$ para $i > j$. $\\det(U) = \\prod u_{ii}$.\n\n**Triangular** inferior $L$: $L_{ij} = 0$ para $i < j$.",
+      "tags": [],
+      "x": 1150,
+      "y": 1276,
+      "w": 300,
+      "h": 167.515625,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771821098163z4ik",
+      "type": "D",
+      "title": "Matrizes Idempotente & Nilpotente",
+      "body": "**Idempotente**: **$P^2 = P$. Autovalores $\\in \\{0, 1\\}$. Projeções são idempotentes. Nilpotente**: **$\\exists k: N^k = 0$. Todos os autovalores = 0. $\\det(N) = 0$.**",
+      "tags": [],
+      "x": 1500,
+      "y": 1276,
+      "w": 300,
+      "h": 119.671875,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771821098167slcx",
+      "type": "D",
+      "title": "Matriz Inversa",
+      "body": "**Definição**. $A \\in M_{n \\times n}$ é *invertível* se existe $A^{-1}$ tal que:\n$$AA^{-1} = A^{-1}A = I_n$$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 1850,
+      "y": 1276,
+      "w": 300,
+      "h": 103.734375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771821098168s30l",
+      "type": "R",
+      "title": "Equivalências de Invertibilidade (TFAE)",
+      "body": "Equivalências (**TFAE**): **São TODAS** equivalentes:\n- $A$ é invertível\n- $\\det(A) \\neq 0$\n- $\\text{rank}(A) = n$\n- $\\ker(A) = \\{\\vec{0}\\}$\n- **As** colunas de $A$ são **LI**\n- $Ax = b$ tem solução única $\\forall b$\n- $0$ **NÃO** é autovalor de $A$",
+      "tags": [
+        "#TEOREMA",
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 1860,
+      "w": 300,
+      "h": 183.453125,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771821098187k2x7",
+      "type": "N",
+      "title": "Rubão — Teorema do Núcleo-Imagem (Rank-Nullity)",
+      "body": "🔥 **Rubão**: \"O que T mata + o que T alcança = o total que T recebe. **Nada** se perde, nada se cria na contagem de dimensão.\"**",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 444,
+      "w": 280,
+      "h": 103.734375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n1771821098189wnig",
+      "type": "N",
+      "title": "Rubão — Isomorfismo",
+      "body": "🔥 **Rubão**: \"Isomorfismo = são o mesmo espaço, só com nomes diferentes. $\\mathbb{R}^3$ e $P_2$ são gêmeos idênticos.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 628,
+      "w": 280,
+      "h": 103.734375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n17718210982117jme",
+      "type": "N",
+      "title": "Rubão — Mudança de Base & Semelhança",
+      "body": "🔥 **Rubão**: \"Semelhança = mesma transformação, bases diferentes. O **DNA** é o mesmo, só a roupa muda.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 2320,
+      "w": 280,
+      "h": 103.734375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804530757mhj8"
+    },
+    {
+      "id": "n1771821098224xdgn",
+      "type": "D",
+      "title": "Coordenadas [v]β",
+      "body": "**Definição**. **Dada** base $\\beta = \\{v_1, \\ldots, v_n\\}$ de $V$, as *coordenadas* de $v \\in V$ na base $\\beta$ são os escalares $(\\alpha_1, \\ldots, \\alpha_n)$ tais que:\n$$v = \\alpha_1 v_1 + \\cdots + \\alpha_n v_n$$\nNotação: $[v]_\\beta = (\\alpha_1, \\ldots, \\alpha_n)^T \\in K^n$.",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 1150,
+      "y": 140,
+      "w": 300,
+      "h": 135.625,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n1771821098232957p",
+      "type": "E",
+      "title": "Erro: (AB)⁻¹ = A⁻¹B⁻¹",
+      "body": "**FALSO**! A ordem inverte!\n\n**Correto**: **$(AB)^{-1} = B^{-1}A^{-1}$ Analogia**: **para tirar meia e sapato, tira sapato primeiro (LIFO). Em geral**: **$(A_1 A_2 \\cdots A_k)^{-1} = A_k^{-1} \\cdots A_2^{-1} A_1^{-1}$**",
+      "tags": [
+        "#ERRO-COMUM"
+      ],
+      "x": 2200,
+      "y": 1276,
+      "w": 280,
+      "h": 151.5625,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045167117bb6"
+    },
+    {
+      "id": "n1771821098265jdei",
+      "type": "N",
+      "title": "← Ref: Espaço Vetorial (V, K, +, ·)",
+      "body": "Conceito definido em **AL**-1 — **Fundação** (**EV**, **Base**, **Dimensão**).\n**Ver**: **Espaço Vetorial** (V, K, +, ·)",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 812,
+      "w": 280,
+      "h": 103.734375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045150572ymt"
+    },
+    {
+      "id": "n1771821098269jx0a",
+      "type": "N",
+      "title": "← Ref: Diagonalização",
+      "body": "Conceito definido em **AL**-5 — **Espectro** (**Autovalores**, **Diag**.).\n**Ver**: Diagonalização",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 2504,
+      "w": 280,
+      "h": 103.734375,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804530757mhj8"
+    }
+  ],
+  "conns": [
+    {
+      "id": "c1771821098266x91p",
+      "type": "produces",
+      "sourceId": "n1771821098265jdei",
+      "targetId": "n1771804712600n3l4",
+      "label": "domínio/contradomínio"
+    },
+    {
+      "id": "c177180499604720kv",
+      "type": "produces",
+      "sourceId": "n1771804712600n3l4",
+      "targetId": "n1771804720834kav1",
+      "label": "define ker e Im"
+    },
+    {
+      "id": "c17718049975937nn7",
+      "type": "implies",
+      "sourceId": "n1771804720834kav1",
+      "targetId": "n1771804725090ec6i",
+      "label": "dim(ker)+dim(Im)=dim(V)"
+    },
+    {
+      "id": "c1771804999118b0bi",
+      "type": "produces",
+      "sourceId": "n1771804712600n3l4",
+      "targetId": "n177180473334269dl",
+      "label": "representada por"
+    },
+    {
+      "id": "c17718050004824fwz",
+      "type": "produces",
+      "sourceId": "n177180473334269dl",
+      "targetId": "n1771804741370jslb",
+      "label": "operações com matrizes"
+    },
+    {
+      "id": "c1771821098270k0zu",
+      "type": "depends",
+      "sourceId": "n1771821098269jx0a",
+      "targetId": "n1771804889135wlsn",
+      "label": "P⁻¹AP = D é mudança de base"
+    },
+    {
+      "id": "c1771821098164b1fw",
+      "type": "produces",
+      "sourceId": "n1771821098160tvwc",
+      "targetId": "n1771821098161j2qq",
+      "label": ""
+    },
+    {
+      "id": "c1771821098165wk3k",
+      "type": "produces",
+      "sourceId": "n1771821098161j2qq",
+      "targetId": "n17718210981622gt3",
+      "label": ""
+    },
+    {
+      "id": "c1771821098166mpf3",
+      "type": "produces",
+      "sourceId": "n17718210981622gt3",
+      "targetId": "n1771821098163z4ik",
+      "label": ""
+    },
+    {
+      "id": "c17718210981691nk5",
+      "type": "produces",
+      "sourceId": "n1771821098167slcx",
+      "targetId": "n1771821098168s30l",
+      "label": ""
+    },
+    {
+      "id": "c17718210981882ubr",
+      "type": "depends",
+      "sourceId": "n1771821098187k2x7",
+      "targetId": "n1771804725090ec6i",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098190misj",
+      "type": "depends",
+      "sourceId": "n1771821098189wnig",
+      "targetId": "n17718047292852qlg",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098212u5hf",
+      "type": "depends",
+      "sourceId": "n17718210982117jme",
+      "targetId": "n1771804889135wlsn",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c17718210982385r53",
+      "type": "depends",
+      "sourceId": "n177180473334269dl",
+      "targetId": "n1771804712600n3l4",
+      "label": "representação de TL"
+    },
+    {
+      "id": "c17718210982482m02",
+      "type": "depends",
+      "sourceId": "n1771804717143yntc",
+      "targetId": "n1771804712600n3l4",
+      "label": "contextualiza TL"
+    },
+    {
+      "id": "c1771821098254nsj8",
+      "type": "depends",
+      "sourceId": "n1771821098224xdgn",
+      "targetId": "n177180473334269dl",
+      "label": "TL representada via coordenadas"
+    },
+    {
+      "id": "c177182109825975an",
+      "type": "depends",
+      "sourceId": "n1771804889135wlsn",
+      "targetId": "n1771821098224xdgn",
+      "label": "mudança de coordenadas"
+    }
+  ],
+  "frames": [
+    {
+      "id": "n17718045150572ymt",
+      "title": "§2 — Transformações Lineares",
+      "x": -280,
+      "y": 80,
+      "width": 1770,
+      "height": 1056
+    },
+    {
+      "id": "n17718045167117bb6",
+      "title": "§3 — Operações com Matrizes",
+      "x": 60,
+      "y": 1216,
+      "width": 2460,
+      "height": 964
+    },
+    {
+      "id": "n1771804530757mhj8",
+      "title": "§10 — Mudança de Base",
+      "x": -280,
+      "y": 2260,
+      "width": 720,
+      "height": 484
+    }
+  ],
+  "viewport": {
+    "x": 174.25373615925764,
+    "y": -555.9701608443797,
+    "z": 0.514661942576432
+  }
+}

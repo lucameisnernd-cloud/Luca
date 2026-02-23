@@ -1,0 +1,301 @@
+{
+  "version": 2,
+  "id": "al-canvas-4",
+  "name": "AL-4 — Geometria (PI, Ortogonalidade)",
+  "created": "2026-02-23T04:31:38.152Z",
+  "modified": "2026-02-23T04:31:38.152Z",
+  "nodes": [
+    {
+      "id": "n1771804809310ctc8",
+      "type": "D",
+      "title": "Produto Interno",
+      "body": "**Definição**. **Um** *produto interno* em $V$ (real) é uma função $\\langle \\cdot, \\cdot \\rangle: V \\times V \\to \\mathbb{R}$ satisfazendo:\n\n1. **Simetria**: $\\langle u, v \\rangle = \\langle v, u \\rangle$\n2. **Linearidade** no 1º argumento: $\\langle \\alpha u + \\beta v, w \\rangle = \\alpha\\langle u,w\\rangle + \\beta\\langle v,w\\rangle$\n3. **Positividade**: $\\langle v, v \\rangle \\geq 0$, com $= 0 \\iff v = \\vec{0}$\n\n**Produto** interno canônico em $\\mathbb{R}^n$:\n$$\\langle u, v \\rangle = u^T v = \\sum_{i=1}^n u_i v_i$$\n\n**Norma:** $\\|v\\| = \\sqrt{\\langle v, v \\rangle}$\n\n**Ângulo:** $\\cos\\theta = \\frac{\\langle u, v \\rangle}{\\|u\\| \\cdot \\|v\\|}$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 140,
+      "w": 300,
+      "h": 432,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804521294gp3y"
+    },
+    {
+      "id": "n1771804811610kl0i",
+      "type": "R",
+      "title": "Desigualdade de Cauchy-Schwarz",
+      "body": "**Teorema** (Cauchy-Schwarz). **Para** todo $u, v \\in V$:\n\n$$\\boxed{|\\langle u, v \\rangle| \\leq \\|u\\| \\cdot \\|v\\|}$$\n\nIgualdade $\\iff u$ e $v$ são linearmente dependentes.\n\n**Consequências:**\n- Garante que $|\\cos\\theta| \\leq 1$ (ângulo bem definido)\n- Desigualdade triangular: $\\|u + v\\| \\leq \\|u\\| + \\|v\\|$",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 100,
+      "y": 612,
+      "w": 300,
+      "h": 296,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804521294gp3y"
+    },
+    {
+      "id": "n1771804815853ax00",
+      "type": "N",
+      "title": "§6 Rubão — Produto Interno",
+      "body": "🔥 **Rubão**: \"Produto interno é como dar régua e transferidor pro espaço vetorial. **Sem** ele, você tem direções mas não tem distâncias nem ângulos.\"\n\n**Exemplos** de produtos internos:\n- $\\mathbb{R}^n$: $\\langle u,v \\rangle = u^T v$ (dot product)\n- $C[a,b]$: $\\langle f,g \\rangle = \\int_a^b f(x)g(x)\\,dx$\n- $M_{n\\times n}$: $\\langle A,B \\rangle = \\text{tr}(A^T B)$\n\n**Cada** escolha de **PI** define uma geometria diferente no mesmo espaço!",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 140,
+      "w": 280,
+      "h": 320,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804521294gp3y"
+    },
+    {
+      "id": "n1771804819817untu",
+      "type": "D",
+      "title": "Ortogonalidade & Complemento Ortogonal",
+      "body": "Vetores ortogonais: $u \\perp v \\iff \\langle u, v \\rangle = 0$ **Conjunto** ortogonal: vetores mutuamente ortogonais. **Se** todos unitários → ortonormal. **Complemento** ortogonal:\n$$W^\\perp = \\{v \\in V : \\langle v, w \\rangle = 0 \\; \\forall w \\in W\\}$$\n\n**Teorema:** $V = W \\oplus W^\\perp$ (decomposição direta)\n$$\\dim(W) + \\dim(W^\\perp) = \\dim(V)$$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 1128,
+      "w": 300,
+      "h": 248,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804522597i7vg"
+    },
+    {
+      "id": "n1771804825499he5o",
+      "type": "R",
+      "title": "Processo de Gram-Schmidt",
+      "body": "Algoritmo: **Dado** $\\{v_1, \\ldots, v_n\\}$ **LI**, produz $\\{e_1, \\ldots, e_n\\}$ ortonormal:\n\n$$u_1 = v_1, \\quad e_1 = \\frac{u_1}{\\|u_1\\|}$$\n\n$$u_k = v_k - \\sum_{j=1}^{k-1} \\langle v_k, e_j \\rangle \\, e_j, \\quad e_k = \\frac{u_k}{\\|u_k\\|}$$\n\n**Ideia:** subtrair de $v_k$ todas as projeções nos vetores já ortogonalizados.\n\n**",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 100,
+      "y": 1748,
+      "w": 300,
+      "h": 288,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804522597i7vg"
+    },
+    {
+      "id": "n1771804829196ci99",
+      "type": "Q",
+      "title": "Projeção Ortogonal",
+      "body": "Projeção de $v$ sobre subespaço $W$:\n\n**Se** $\\{e_1, \\ldots, e_k\\}$ é base ortonormal de $W$:\n$$\\text{proj}_W(v) = \\sum_{i=1}^k \\langle v, e_i \\rangle \\, e_i$$\n\n**Projeção sobre um vetor:**\n$$\\text{proj}_u(v) = \\frac{\\langle v, u \\rangle}{\\langle u, u \\rangle} u$$\n\n**Matriz de projeção:** $P = A(A^T A)^{-1} A^T$ onde colunas de $A$ = base de $W$.\n\n**Propriedades:** $P^2 = P$ (idempotente), $P^T = P$ (simétrica)",
+      "tags": [],
+      "x": 100,
+      "y": 1416,
+      "w": 300,
+      "h": 292,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804522597i7vg"
+    },
+    {
+      "id": "n1771821098197nqt0",
+      "type": "N",
+      "title": "Rubão — Desigualdade de Cauchy-Schwarz",
+      "body": "🔥 **Rubão**: \"Cauchy-Schwarz é a lei da gravidade da **AL**. **Projeção nunca** é maior que o vetor original.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 500,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804521294gp3y"
+    },
+    {
+      "id": "n1771821098199lj9e",
+      "type": "N",
+      "title": "Rubão — Ortogonalidade & Complemento Ortogonal",
+      "body": "🔥 **Rubão**: \"Ortogonal = completamente independente. **Zero** correlação. **Zero** interferência.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1128,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804522597i7vg"
+    },
+    {
+      "id": "n1771821098201wjr9",
+      "type": "N",
+      "title": "Rubão — Processo de Gram-Schmidt",
+      "body": "🔥 Rubão: \"Gram-Schmidt = tirar a parte redundante de cada vetor. O que sobra é puro, novo, ortogonal.\"**",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1312,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804522597i7vg"
+    },
+    {
+      "id": "n1771821098225n47k",
+      "type": "D",
+      "title": "Base Ortonormal (BON)",
+      "body": "**Definição**. Uma base $\\{e_1, \\ldots, e_n\\}$ é *ortonormal* se:\n$$\\langle e_i, e_j \\rangle = \\delta_{ij} = \\begin{cases} 1 & i=j \\\\ 0 & i\\neq j \\end{cases}$$\n\nPropriedade: em BON, coordenadas são projeções: $\\alpha_i = \\langle v, e_i \\rangle$.",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 450,
+      "y": 1128,
+      "w": 300,
+      "h": 216,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804522597i7vg"
+    },
+    {
+      "id": "n1771821098226upv5",
+      "type": "D",
+      "title": "Norma ‖v‖",
+      "body": "**Definição**. A *norma* induzida por produto interno é:\n$$\\|v\\| = \\sqrt{\\langle v, v \\rangle}$$\n\n**Propriedades**:\n- $\\|v\\| \\geq 0$ (= 0 ⟺ $v = \\vec{0}$)\n- $\\|\\alpha v\\| = |\\alpha| \\|v\\|$\n- $\\|u + v\\| \\leq \\|u\\| + \\|v\\|$ (desigualdade triangular)",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 450,
+      "y": 140,
+      "w": 300,
+      "h": 232,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804521294gp3y"
+    },
+    {
+      "id": "n1771821098289bvpl",
+      "type": "N",
+      "title": "← Ref: Equações Normais",
+      "body": "Conceito definido em **AL-6 — Arsenal (Decomposições, MQ)**.\nVer: **Equações Normais**",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 684,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804521294gp3y"
+    }
+  ],
+  "conns": [
+    {
+      "id": "c1771805016012qf24",
+      "type": "implies",
+      "sourceId": "n1771804809310ctc8",
+      "targetId": "n1771804811610kl0i",
+      "label": "|⟨u,v⟩| ≤ ‖u‖‖v‖"
+    },
+    {
+      "id": "c1771805017533pzxs",
+      "type": "produces",
+      "sourceId": "n1771804809310ctc8",
+      "targetId": "n1771804819817untu",
+      "label": "⟨u,v⟩=0 → ortogonal"
+    },
+    {
+      "id": "c17718050232697r4k",
+      "type": "produces",
+      "sourceId": "n1771804819817untu",
+      "targetId": "n1771804825499he5o",
+      "label": "ortogonalização"
+    },
+    {
+      "id": "c1771805024775idc7",
+      "type": "produces",
+      "sourceId": "n1771804825499he5o",
+      "targetId": "n1771804829196ci99",
+      "label": "base ON → projeção"
+    },
+    {
+      "id": "c1771821098198p329",
+      "type": "depends",
+      "sourceId": "n1771821098197nqt0",
+      "targetId": "n1771804811610kl0i",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c17718210982002r7o",
+      "type": "depends",
+      "sourceId": "n1771821098199lj9e",
+      "targetId": "n1771804819817untu",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098202irvg",
+      "type": "depends",
+      "sourceId": "n1771821098201wjr9",
+      "targetId": "n1771804825499he5o",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098239k0wo",
+      "type": "depends",
+      "sourceId": "n1771804829196ci99",
+      "targetId": "n1771804819817untu",
+      "label": "usa ortogonalidade"
+    },
+    {
+      "id": "c17718210982404nud",
+      "type": "depends",
+      "sourceId": "n1771804829196ci99",
+      "targetId": "n1771821098225n47k",
+      "label": "usa BON"
+    },
+    {
+      "id": "c1771821098249h4e8",
+      "type": "depends",
+      "sourceId": "n1771804815853ax00",
+      "targetId": "n1771804809310ctc8",
+      "label": "contextualiza PI"
+    },
+    {
+      "id": "c1771821098290ueu4",
+      "type": "depends",
+      "sourceId": "n1771821098289bvpl",
+      "targetId": "n1771804809310ctc8",
+      "label": "norma induzida por PI"
+    }
+  ],
+  "frames": [
+    {
+      "id": "n1771804521294gp3y",
+      "title": "§6 — Produto Interno",
+      "x": -280,
+      "y": 80,
+      "width": 1070,
+      "height": 908
+    },
+    {
+      "id": "n1771804522597i7vg",
+      "title": "§7 — Ortogonalidade",
+      "x": -280,
+      "y": 1068,
+      "width": 1070,
+      "height": 1048
+    }
+  ],
+  "viewport": {
+    "x": -330,
+    "y": 30,
+    "z": 0.3929273084479371
+  }
+}

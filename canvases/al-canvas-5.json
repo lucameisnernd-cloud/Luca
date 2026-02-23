@@ -1,0 +1,437 @@
+{
+  "version": 2,
+  "id": "al-canvas-5",
+  "name": "AL-5 — Espectro (Autovalores, Diag.)",
+  "created": "2026-02-23T04:31:38.152Z",
+  "modified": "2026-02-23T04:31:38.152Z",
+  "nodes": [
+    {
+      "id": "n1771804846226kkyh",
+      "type": "D",
+      "title": "Autovalores e Autovetores",
+      "body": "**Definição**. **Seja** $T: V \\to V$ linear (ou $A \\in M_{n \\times n}$). **Um** escalar $\\lambda \\in K$ é *autovalor* se existe $v \\neq \\vec{0}$ tal que:\n\n$$\\boxed{Av = \\lambda v}$$\n\nO vetor $v$ é o *autovetor* associado a $\\lambda$.\n\n**Autoespaço:** $E_\\lambda = \\ker(A - \\lambda I) = \\{v : Av = \\lambda v\\}$\nÉ subespaço de $V$.",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 140,
+      "w": 300,
+      "h": 280,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n17718048607714w5h",
+      "type": "R",
+      "title": "Teorema de Cayley-Hamilton",
+      "body": "**Teorema**. **Toda** matriz satisfaz seu próprio polinômio característico:\n\n$$p(A) = A^n - c_{n-1}A^{n-1} - \\cdots - c_1 A - c_0 I = 0$$\n\n**Consequência prática:** $A^{-1}$ pode ser expressa como polinômio em $A$:\n$$A^{-1} = -\\frac{1}{c_0}(A^{n-1} - c_{n-1}A^{n-2} - \\cdots - c_1 I)$$",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 100,
+      "y": 848,
+      "w": 300,
+      "h": 240,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n1771804850175979u",
+      "type": "Q",
+      "title": "Polinômio Característico",
+      "body": "Equação característica:\n$$p(\\lambda) = \\det(A - \\lambda I) = 0$$\n\nPara $A \\in M_{n \\times n}$, $p(\\lambda)$ é polinômio de grau $n$.\n\n**Exemplo 2×2:**\n$$A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$$\n$$p(\\lambda) = \\lambda^2 - (a+d)\\lambda + (ad-bc)$$\n$$= \\lambda^2 - \\text{tr}(A)\\lambda + \\det(A)$$\n\n**Relações com coeficientes:**\n- $\\text{tr}(A) = \\sum \\lambda_i$ (soma dos autovalores)\n- $\\det(A) = \\prod \\lambda_i$ (produto dos autovalores)",
+      "tags": [],
+      "x": 100,
+      "y": 460,
+      "w": 300,
+      "h": 348,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n1771804854958pl1f",
+      "type": "D",
+      "title": "Multiplicidade Algébrica vs Geométrica",
+      "body": "Multiplicidade algébrica $m_a(\\lambda)$: quantas vezes $\\lambda$ aparece como raiz de $p(\\lambda)$.\n\n**Multiplicidade** geométrica $m_g(\\lambda)$: $\\dim(E_\\lambda) = \\dim(\\ker(A - \\lambda I))$.\n\n**Relação** fundamental:\n$$1 \\leq m_g(\\lambda) \\leq m_a(\\lambda)$$\n\n**Para diagonalização:** precisa $m_g = m_a$ para **TODO** autovalor.",
+      "tags": [],
+      "x": 450,
+      "y": 140,
+      "w": 300,
+      "h": 252,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n1771804868724h30h",
+      "type": "D",
+      "title": "Diagonalização",
+      "body": "**Definição**. $A$ é *diagonalizável* se existe $P$ invertível tal que:\n\n$$\\boxed{A = PDP^{-1}}$$\n\nonde $D = \\text{diag}(\\lambda_1, \\ldots, \\lambda_n)$.\n\n- Colunas de $P$ = autovetores de $A$\n- Diagonal de $D$ = autovalores correspondentes\n\n**Critério:** $A_{n\\times n}$ é diagonalizável $\\iff$ $A$ tem $n$ autovetores LI $\\iff$ $m_g(\\lambda_i) = m_a(\\lambda_i)$ para todo $i$.\n\n**Potência fácil:** $A^k = PD^kP^{-1}$ onde $D^k = \\text{diag}(\\lambda_1^k, \\ldots, \\lambda_n^k)$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 1308,
+      "w": 300,
+      "h": 376,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045292995v8i"
+    },
+    {
+      "id": "n1771804874176sgcr",
+      "type": "R",
+      "title": "Teorema Espectral (Matrizes Simétricas)",
+      "body": "**Teorema Espectral**. **Se** $A = A^T$ (simétrica real), então:\n\n1. **Todos** os autovalores são reais\n2. **Autovetores** de autovalores distintos são ortogonais\n3. $A$ é ortogonalmente diagonalizável:\n\n$$A = Q \\Lambda Q^T$$\n\nonde $Q$ é ortogonal ($Q^T Q = I$) e $\\Lambda$ é diagonal.",
+      "tags": [
+        "#TEOREMA",
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 2164,
+      "w": 300,
+      "h": 264,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045292995v8i"
+    },
+    {
+      "id": "n177180488003452q0",
+      "type": "C",
+      "title": "Exemplo: Diagonalizar A = [[4,1],[2,3]]",
+      "body": "$$A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$$\n\n**1. Polinômio característico:**\n$p(\\lambda) = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 10 = (\\lambda-5)(\\lambda-2)$\n\n**2. Autovalores:** $\\lambda_1 = 5, \\lambda_2 = 2$\n\n**3. Autovetores:**\n- $\\lambda_1 = 5$: $(A-5I)v = 0 \\Rightarrow v_1 = (1, 1)^T$\n- $\\lambda_2 = 2$: $(A-2I)v = 0 \\Rightarrow v_2 = (1, -2)^T$\n\n**4. Resultado:**\n$$P = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix}, \\quad D = \\begin{pmatrix} 5 & 0 \\\\ 0 & 2 \\end{pmatrix}$$",
+      "tags": [
+        "#CALC"
+      ],
+      "x": 100,
+      "y": 1724,
+      "w": 300,
+      "h": 400,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n17718045292995v8i"
+    },
+    {
+      "id": "n1771804906850bi6l",
+      "type": "R",
+      "title": "Lei de Inércia de Sylvester",
+      "body": "**Teorema** (**Sylvester**). **Para** qualquer forma quadrática real $Q(x) = x^T A x$, a assinatura $(p, q, z)$ é invariante:\n\n- $p$ = número de autovalores positivos\n- $q$ = número de autovalores negativos  \n- $z$ = número de autovalores zero\n- $p + q + z = n$\n\nA assinatura não depende da mudança de base — é invariante intrínseco.\n\n**Índice** de inércia: $q$ (número de autovalores negativos)",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 100,
+      "y": 2984,
+      "w": 300,
+      "h": 296,
+      "confidence": "C",
+      "version": "v0.1",
+      "frameId": "n1771804535122q1ux"
+    },
+    {
+      "id": "n17718210981804meb",
+      "type": "D",
+      "title": "Forma Quadrática",
+      "body": "**Definição**. Uma *forma quadrática* em $\\mathbb{R}^n$ é:\n$$Q(x) = x^T A x = \\sum_{i,j} a_{ij} x_i x_j$$\nonde $A$ é matriz simétrica ($A = A^T$).\n\n**Classificação** (pelos autovalores de $A$):\n- **Positiva definida**: todos $\\lambda_i > 0$\n- **Positiva semidefinida**: todos $\\lambda_i \\geq 0$\n- **Negativa definida**: todos $\\lambda_i < 0$\n- **Indefinida**: tem $\\lambda_i > 0$ e $\\lambda_j < 0$",
+      "tags": [
+        "#FUNDAMENTAL"
+      ],
+      "x": 100,
+      "y": 2648,
+      "w": 300,
+      "h": 296,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804535122q1ux"
+    },
+    {
+      "id": "n1771821098181u46m",
+      "type": "R",
+      "title": "Classificação por Autovalores",
+      "body": "**Teorema**. Pelo Teorema Espectral, $A = Q\\Lambda Q^T$, então:\n$$Q(x) = x^T Q\\Lambda Q^T x = y^T \\Lambda y = \\sum \\lambda_i y_i^2$$\nonde $y = Q^T x$ (coordenadas na base de autovetores).\n\nA classificação depende apenas dos **sinais dos autovalores**.",
+      "tags": [
+        "#TEOREMA"
+      ],
+      "x": 450,
+      "y": 2984,
+      "w": 300,
+      "h": 232,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804535122q1ux"
+    },
+    {
+      "id": "n1771821098203ol4i",
+      "type": "N",
+      "title": "Rubão — Autovalores e Autovetores",
+      "body": "🔥 **Rubão**: \"Autovetor = direção que a transformação não desvia. **Só** estica ou encolhe. **Lambda** diz quanto.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 140,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n1771821098205oxcp",
+      "type": "N",
+      "title": "Rubão — Teorema de Cayley-Hamilton",
+      "body": "🔥 **Rubão**: \"A matrix obedece sua própria equação. É como se ela confessasse suas limitações.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 324,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n1771821098207ws44",
+      "type": "N",
+      "title": "Rubão — Multiplicidade Algébrica vs Geométrica",
+      "body": "🔥 **Rubão**: \"Algébrica = quantas vezes o autovalor aparece na equação. **Geométrica** = quantos autovetores **LI** ele realmente tem. **Se** faltou, não diagonaliza.\"",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 508,
+      "w": 280,
+      "h": 160,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n177182109820929r4",
+      "type": "N",
+      "title": "Rubão — Teorema Espectral (Matrizes Simétricas)",
+      "body": "🔥 **Rubão**: \"Matriz simétrica é a mais bem-comportada que existe. **Autovalores** reais, autovetores perpendiculares, diagonaliza **sempre**. É a aristocracia das matrizes.\"\n\n**Aplicações**: **PCA**, vibrações mecânicas, formas quadráticas, otimização.",
+      "tags": [
+        "#RUBAO"
+      ],
+      "x": -240,
+      "y": 1308,
+      "w": 280,
+      "h": 200,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045292995v8i"
+    },
+    {
+      "id": "n1771821098228n2tu",
+      "type": "D",
+      "title": "Assinatura (p, q, z)",
+      "body": "**Definição**. A *assinatura* de uma forma quadrática $Q(x) = x^T A x$ é a tripla $(p, q, z)$ onde:\n- $p$ = número de autovalores positivos\n- $q$ = número de autovalores negativos  \n- $z$ = número de autovalores zero\n\n$p + q + z = n$ (dimensão). O *índice de inércia* é $(p, q)$.",
+      "tags": [],
+      "x": 450,
+      "y": 2648,
+      "w": 300,
+      "h": 204,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804535122q1ux"
+    },
+    {
+      "id": "n1771821098233z0lw",
+      "type": "E",
+      "title": "Erro: Autovalores são aditivos",
+      "body": "**FALSO!** $\\lambda(A+B) \\neq \\lambda(A) + \\lambda(B)$ em geral.\n\nContraexemplo:\n$$A = \\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}, B = \\begin{pmatrix}0&0\\\\0&1\\end{pmatrix}$$\n$\\lambda(A) = \\{1,0\\}$, $\\lambda(B) = \\{0,1\\}$, mas $\\lambda(A+B) = \\lambda(I) = \\{1,1\\}$.\n\nO que É aditivo: $\\text{tr}(A+B) = \\text{tr}(A) + \\text{tr}(B)$.",
+      "tags": [
+        "#ERRO-COMUM"
+      ],
+      "x": 800,
+      "y": 140,
+      "w": 280,
+      "h": 288,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804528081it7x"
+    },
+    {
+      "id": "n1771821098235w813",
+      "type": "E",
+      "title": "Erro: Toda matriz é diagonalizável",
+      "body": "**FALSO!** Condição necessária: multiplicidade geométrica = algébrica para CADA autovalor.\n\nContraexemplo: $A = \\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$\n- $\\lambda = 0$ (mult. algébrica = 2, geométrica = 1)\n- $A$ é **nilpotente** e não-diagonalizável\n\n**Garantia**: matrizes simétricas ($A = A^T$) SÃO sempre diagonalizáveis (Teorema Espectral).",
+      "tags": [
+        "#ERRO-COMUM"
+      ],
+      "x": 450,
+      "y": 1308,
+      "w": 280,
+      "h": 288,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n17718045292995v8i"
+    },
+    {
+      "id": "n1771821098285j2ex",
+      "type": "N",
+      "title": "← Ref: Núcleo e Imagem",
+      "body": "Conceito definido em **AL-2 — Ação (TL, Matrizes)**.\nVer: **Núcleo e Imagem**",
+      "tags": [
+        "#PRÉ-REQUISITO"
+      ],
+      "x": -240,
+      "y": 708,
+      "w": 280,
+      "h": 144,
+      "confidence": "C",
+      "version": "v0.2",
+      "frameId": "n1771804528081it7x"
+    }
+  ],
+  "conns": [
+    {
+      "id": "c1771805026429ayga",
+      "type": "produces",
+      "sourceId": "n1771804846226kkyh",
+      "targetId": "n1771804850175979u",
+      "label": "det(A-λI)=0"
+    },
+    {
+      "id": "c1771805027911924x",
+      "type": "produces",
+      "sourceId": "n1771804850175979u",
+      "targetId": "n1771804854958pl1f",
+      "label": "raízes → multiplicidades"
+    },
+    {
+      "id": "c177180502963315ha",
+      "type": "implies",
+      "sourceId": "n1771804854958pl1f",
+      "targetId": "n1771804868724h30h",
+      "label": "mg=ma ⟹ diagonalizável"
+    },
+    {
+      "id": "c1771805031272oywd",
+      "type": "generalizes",
+      "sourceId": "n1771804868724h30h",
+      "targetId": "n1771804874176sgcr",
+      "label": "simétrica → espectral"
+    },
+    {
+      "id": "c17718050400081gzr",
+      "type": "produces",
+      "sourceId": "n1771804874176sgcr",
+      "targetId": "n17718210981804meb",
+      "label": "A=QΛQᵀ classifica Q(x)"
+    },
+    {
+      "id": "c1771805041507q206",
+      "type": "implies",
+      "sourceId": "n1771821098181u46m",
+      "targetId": "n1771804906850bi6l",
+      "label": "assinatura é invariante"
+    },
+    {
+      "id": "c1771821098286rorl",
+      "type": "produces",
+      "sourceId": "n1771821098285j2ex",
+      "targetId": "n1771804846226kkyh",
+      "label": "ker(A-λI) = autoespaço"
+    },
+    {
+      "id": "c1771805057490kwbx",
+      "type": "implies",
+      "sourceId": "n1771804850175979u",
+      "targetId": "n17718048607714w5h",
+      "label": "p(A)=0 (Cayley-Hamilton)"
+    },
+    {
+      "id": "c1771821098182ijg4",
+      "type": "produces",
+      "sourceId": "n17718210981804meb",
+      "targetId": "n1771821098181u46m",
+      "label": ""
+    },
+    {
+      "id": "c1771821098204n0ai",
+      "type": "depends",
+      "sourceId": "n1771821098203ol4i",
+      "targetId": "n1771804846226kkyh",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c1771821098206lpjr",
+      "type": "depends",
+      "sourceId": "n1771821098205oxcp",
+      "targetId": "n17718048607714w5h",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c177182109820873xi",
+      "type": "depends",
+      "sourceId": "n1771821098207ws44",
+      "targetId": "n1771804854958pl1f",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c177182109821031h3",
+      "type": "depends",
+      "sourceId": "n177182109820929r4",
+      "targetId": "n1771804874176sgcr",
+      "label": "contextualiza"
+    },
+    {
+      "id": "c17718210982346cn7",
+      "type": "contradicts",
+      "sourceId": "n1771821098233z0lw",
+      "targetId": "n1771804846226kkyh",
+      "label": "contradiz"
+    },
+    {
+      "id": "c1771821098250lgmh",
+      "type": "exemplifies",
+      "sourceId": "n177180488003452q0",
+      "targetId": "n1771804868724h30h",
+      "label": "exemplo concreto"
+    },
+    {
+      "id": "c1771821098257ufd7",
+      "type": "depends",
+      "sourceId": "n1771821098228n2tu",
+      "targetId": "n1771804906850bi6l",
+      "label": "classificação por assinatura"
+    }
+  ],
+  "frames": [
+    {
+      "id": "n1771804528081it7x",
+      "title": "§8 — Autovalores e Autovetores",
+      "x": -280,
+      "y": 80,
+      "width": 1400,
+      "height": 1088
+    },
+    {
+      "id": "n17718045292995v8i",
+      "title": "§9 — Diagonalização",
+      "x": -280,
+      "y": 1248,
+      "width": 1050,
+      "height": 1260
+    },
+    {
+      "id": "n1771804535122q1ux",
+      "title": "§12 — Formas Quadráticas",
+      "x": 60,
+      "y": 2588,
+      "width": 730,
+      "height": 772
+    }
+  ],
+  "viewport": {
+    "x": -330,
+    "y": 30,
+    "z": 0.24390243902439024
+  }
+}
